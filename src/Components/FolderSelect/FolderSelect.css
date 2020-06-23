@@ -1,0 +1,26 @@
+.folderSelect {
+    margin: 15px;
+}
+
+.folderItem {
+    border: 2px solid #424242;
+    color: #424242;
+    width: 175px;
+    padding: 15px;
+}
+
+button {
+    background-color: white;
+    border: 2px solid #424242;
+    color: #424242;
+    font-family: "arial";
+    width: 175px;
+    height: 56px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+button:hover {
+    color: white;
+    background-color: #424242;
+}

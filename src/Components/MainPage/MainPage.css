@@ -1,0 +1,8 @@
+.header {
+    color: #424242;
+    border-bottom: #424242 2px solid;
+}
+
+.mainDisplay {
+    display: flex;
+}

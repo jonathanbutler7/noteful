@@ -1,0 +1,29 @@
+.noteBox{
+    /* display: flex; */
+    width: 100%;
+    margin: 15px;
+}
+
+.note {
+    border: solid 2px #424242;
+    margin-bottom: 10px;
+}
+
+.noteTitle {
+    display: flex;
+    justify-content: flex-start;
+    margin: 15px;
+}
+
+.noteDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.addNoteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
