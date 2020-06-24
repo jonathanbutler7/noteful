@@ -3,10 +3,16 @@ import './NoteDisplay.css'
 
 class NoteDisplay extends React.Component {
     render() {
-        const {notes} = this.props
+        const {notes, folderId} = this.props;
+        let newNotes = notes;
+        if (folderId) {
+            newNotes = newNotes.filter(function(note) {
+                return note.folderId === folderId
+            })
+        }
         return (
             <div className="noteBox">
-                {notes.map(({name, modified}) => {
+                {newNotes.map(({name, modified}) => {
                     return (<div className="note">
                     <h2 className="noteTitle">{name}</h2>
                         <div className="noteDetails">

@@ -2,6 +2,8 @@
     margin: 15px;
     display: flex;
     flex-direction: column;
+    
+    /* border: 2px solid red; */
 }
 
 .folderItem {
@@ -11,7 +13,15 @@
     padding: 15px;
     text-align: center;
     background-color: #F5F5F5;
+
+    margin-bottom: 0 auto 0 auto;
 }
+
+.folderItem:hover {
+    color: white;
+    background-color: #424242;
+    text-decoration: none;
+} 
 
 .addFolderButton {
     background-color: white;
@@ -24,6 +34,7 @@
     /* text-align: center; */
     margin: 0 auto 0 auto;
     cursor: pointer;
+    
 }
 
 button:hover {

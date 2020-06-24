@@ -3,11 +3,11 @@
     flex-direction: column;
     width: 100%;
     margin: 15px;
-    background-color: #F5F5F5;
 }
 
 .note {
     border: solid 2px #424242;
+    background-color: #F5F5F5;
     margin-bottom: 10px;
 }
 
@@ -22,6 +22,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 15px;
+    
 }
 
 .addNoteButton {

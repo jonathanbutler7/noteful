@@ -21,11 +21,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header data={dummyStore.folders}/>
         <Switch>
-          <Route exact path="/main" component={MainPage} />
-          <Route exact path ="/folder" component={FolderRoute} />
-          <Route exact path="/note" component={NoteRoute} />
+          <Route exact path="/" component={MainPage} />
+          <Route path ="/folder" component={FolderRoute} />
+          <Route path="/note/:folderId" component={NoteRoute} />
           <Route component={Error} />
         </Switch>
       </>
