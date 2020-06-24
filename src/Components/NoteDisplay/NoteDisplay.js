@@ -11,13 +11,13 @@ class NoteDisplay extends React.Component {
                     <h2 className="noteTitle">{name}</h2>
                         <div className="noteDetails">
                             <p>Date modified {modified}</p>
-                            <button>
+                            <button id="folderDelete">
                                 <h5>Delete</h5>
                             </button>
                         </div>
                     </div>)
                 })}
-                <button>
+                <button className="addNoteButton">
                     <h5>Add note</h5>
                 </button>
             </div>

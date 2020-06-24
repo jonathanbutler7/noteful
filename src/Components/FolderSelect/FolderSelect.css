@@ -1,5 +1,7 @@
 .folderSelect {
     margin: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .folderItem {
@@ -7,16 +9,20 @@
     color: #424242;
     width: 175px;
     padding: 15px;
+    text-align: center;
+    background-color: #F5F5F5;
 }
 
-button {
+.addFolderButton {
     background-color: white;
     border: 2px solid #424242;
     color: #424242;
     font-family: "arial";
     width: 175px;
     height: 56px;
-    justify-content: center;
+    /* justify-content: center; */
+    /* text-align: center; */
+    margin: 0 auto 0 auto;
     cursor: pointer;
 }
 

@@ -7,21 +7,14 @@ import DummyData from '../../dummy-store'
 class MainPage extends React.Component {
     render() {
         return (
-            <div>
-                <header className="header">
-                    <h1>Noteful</h1>
-                </header>
-                <div className="mainDisplay">
-        <FolderSelect 
-            data={DummyData.folders}
-        />
-        <NoteDisplay 
-            notes={DummyData.notes}
-        />          
-        </div>
-        
-      </div>
-            
+        <div className="mainDisplay">
+            <FolderSelect 
+                data={DummyData.folders}
+            />
+            <NoteDisplay 
+                notes={DummyData.notes}
+            />          
+        </div>   
         )
     }
 }
