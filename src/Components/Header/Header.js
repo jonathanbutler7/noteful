@@ -7,8 +7,8 @@ export default function Header(props) {
         <div>
         <header className="header">
             <Link to={'/'}>
-                <button class="headerTitle">
-                    <h1>Noteful</h1>
+                <button className="headerTitle">
+                    <h1>{props.title}</h1>
                 </button>
             </Link>
         </header>

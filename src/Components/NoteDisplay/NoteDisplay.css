@@ -51,4 +51,5 @@
 #folderDelete:hover {
     background-color: #424242;
     color: white;
+    cursor: pointer;
 }

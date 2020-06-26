@@ -20,8 +20,12 @@
 .folderItem:hover {
     color: white;
     background-color: #424242;
-    text-decoration: none;
+    /* text-decoration: none; */
 } 
+
+.folderItem:active {
+    text-decoration: none;
+}
 
 .addFolderButton {
     background-color: white;
