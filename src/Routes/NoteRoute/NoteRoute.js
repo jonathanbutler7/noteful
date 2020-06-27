@@ -4,9 +4,7 @@ import './NoteRoute.css'
 // import DummyData from '../../dummy-store'
 
 export default function NoteRoute(props) {
-    
-    return (
-        
+    return ( 
         <div className="noteDisplay">
             <button 
                 className="backButton"

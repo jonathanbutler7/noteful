@@ -15,7 +15,7 @@ class FolderSelect extends React.Component {
                         <Link 
                             to={`/note/${folder.id}`} 
                             id="linkItem" key={folder.id}
-                            onClick={() => console.log('clicked', folder.name)}
+                            onClick={() => console.log('opened', folder.name)}
                         >
                         <h4 className="folderItem" key={folder.id}>{folder.name}</h4>
                         </Link> 

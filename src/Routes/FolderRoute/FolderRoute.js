@@ -4,15 +4,19 @@ import NoteDisplay from '../../Components/NoteDisplay/NoteDisplay'
 import DummyData from '../../dummy-store'
 import './FolderRoute.css'
 
-export default function FolderRoute() {
-    return (
-        <div className="folderDisplay">
-            <FolderSelect 
-                data={DummyData.folders}
-            />
-            <NoteDisplay 
-                notes={DummyData.notes}
-            />
-        </div>
-    )
+class FolderRoute extends React.Component {
+    render() {
+        return (
+            <div className="folderDisplay">
+                <FolderSelect 
+                    data={DummyData.folders}
+                />
+                <NoteDisplay 
+                    notes={DummyData.notes}
+                />
+            </div>
+        )
+    }
 }
+
+export default FolderRoute
