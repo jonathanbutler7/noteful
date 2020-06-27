@@ -27,10 +27,10 @@ class FolderSelect extends React.Component {
                             value={this.state.isSelected}
                         >
                         <h4 
-                            // onClick={this.handleToggle}
-                            onClick={this.props.data.map(id => {
-                                return this.props.data.folder
-                            })}
+                            onClick={this.handleToggle}
+                            // onClick={this.props.data.map(id => {
+                            //     return this.props.data.folder
+                            // })}
                             className={this.state.isSelected ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
                         {folder.name}
