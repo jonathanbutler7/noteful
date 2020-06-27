@@ -51,6 +51,7 @@ class App extends React.Component {
 
     return (
       <>
+        {console.log(this.state.folders)}
         <NotefulContext.Provider
           value={{ state: this.state, deleteNote: this.deleteNote }}
         >

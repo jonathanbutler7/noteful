@@ -6,9 +6,20 @@ class NoteDisplay extends React.Component {
 
     static contextType = NotefulContext;
 
+    // deleteFromApi = () => {
+    //     fetch('http://localhost:9090/notes', {
+    //         method: 'DELETE',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => deleteNote(id))
+    // }
+
     render() {
         const { notes } = this.context.state;
-        console.log(this.context)
+        
         const { folderId } = this.props;
         
         //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
@@ -19,7 +30,7 @@ class NoteDisplay extends React.Component {
         
         //if there is a folderId (in the array from props), then filter through notes and return only the new notes with that folder Id, then store notes with that Id in newNotes
         if (folderId) {
-            console.log(newNotes)
+            
             newNotes = newNotes.filter(function(note) {
                 return note.folderId === folderId
             })
@@ -39,6 +50,7 @@ class NoteDisplay extends React.Component {
                                 <button 
                                     id="folderDelete"
                                     onClick={() => this.context.deleteNote(id)}
+                                    // onClick={() => this.deleteFromApi()}
                                 >
                                     <h5>Delete</h5>
                                 </button>
