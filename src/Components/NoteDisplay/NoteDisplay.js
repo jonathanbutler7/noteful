@@ -35,6 +35,7 @@ class NoteDisplay extends React.Component {
                 return note.folderId === folderId
             })
         }
+        console.log(folderId)
         return (
                 <div className="noteBox">
                     {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}

@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 class FolderSelect extends React.Component {
     state = {
-        isSelected: false
+        isSelected1: false,
+        isSelected2: false,
+        isSelected3: false
     }
 
     handleToggle = () => {
@@ -25,7 +27,10 @@ class FolderSelect extends React.Component {
                             value={this.state.isSelected}
                         >
                         <h4 
-                            onClick={this.handleToggle}
+                            // onClick={this.handleToggle}
+                            onClick={this.props.data.map(id => {
+                                return this.props.data.folder
+                            })}
                             className={this.state.isSelected ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
                         {folder.name}
