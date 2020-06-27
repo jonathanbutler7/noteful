@@ -6,16 +6,16 @@ class NoteDisplay extends React.Component {
 
     static contextType = NotefulContext;
 
-    // deleteFromApi = () => {
-    //     fetch('http://localhost:9090/notes', {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => deleteNote(id))
-    // }
+    deleteFromApi = (id) => {
+        fetch(`http://localhost:9090/notes/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(data => this.context.deleteNote(id))
+    }
 
     render() {
         const { notes } = this.context.state;
@@ -51,7 +51,7 @@ class NoteDisplay extends React.Component {
                                 <button 
                                     id="folderDelete"
                                     onClick={() => this.context.deleteNote(id)}
-                                    // onClick={() => this.deleteFromApi()}
+                                    onClick={() => this.deleteFromApi(id)}
                                 >
                                     <h5>Delete</h5>
                                 </button>
