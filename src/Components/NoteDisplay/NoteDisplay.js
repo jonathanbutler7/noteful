@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './NoteDisplay.css'
 import NotefulContext from '../../NotefulContext';
 
@@ -35,7 +36,7 @@ class NoteDisplay extends React.Component {
                 return note.folderId === folderId
             })
         }
-        console.log(folderId)
+        // console.log(folderId)
         return (
                 <div className="noteBox">
                     {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
@@ -58,9 +59,11 @@ class NoteDisplay extends React.Component {
                             </div>
                         </div>)
                     })}
-                    <button className="addNoteButton">
-                        <h5>Add note</h5>
-                    </button>
+                    <Link to={'/add-note'}>
+                        <button className="addButton">
+                            <h5>Add note</h5>
+                        </button>
+                    </Link>
                 </div>
         )
     }

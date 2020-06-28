@@ -1,6 +1,7 @@
 import React from 'react';
 import './FolderSelect.css';
 import { Link } from 'react-router-dom';
+import AddFolder from '../AddFolder/AddFolder'
 
 
 class FolderSelect extends React.Component {
@@ -10,8 +11,10 @@ class FolderSelect extends React.Component {
         isSelected3: false
     }
 
-    handleToggle = () => {
-        this.setState({isSelected:!this.state.isSelected})
+    handleToggle = (e) => {
+        this.setState({
+            [e.target.name]: [e.target.value]
+        })
     }
     render() {
         return (
@@ -24,23 +27,26 @@ class FolderSelect extends React.Component {
                             to={`/note/${folder.id}`} 
                             id="linkItem" key={folder.id}
                             style={{ textDecoration: 'none' }}
-                            value={this.state.isSelected}
+                            
                         >
                         <h4 
-                            onClick={this.handleToggle}
+                            value={this.state.isSelected1}
+                            onClick={e => this.handleToggle(e)}
                             // onClick={this.props.data.map(id => {
                             //     return this.props.data.folder
                             // })}
-                            className={this.state.isSelected ? "folderItemSelected" : "folderItem"} 
+                            className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
                         {folder.name}
                         </h4>
                         </Link> 
                     )     
                 })}
+                <Link to={'/add-folder'} >
                 <button className="addFolderButton">
                     <h5>Add Folder</h5>
                 </button>
+                </Link>
             </div>
         )
     }

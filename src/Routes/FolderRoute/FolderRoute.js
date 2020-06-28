@@ -8,6 +8,7 @@ class FolderRoute extends React.Component {
     render() {
         return (
             <div className="folderDisplay">
+                <h1>hello from folder route</h1>
                 <FolderSelect 
                     data={DummyData.folders}
                 />
