@@ -1,8 +1,7 @@
 import React from 'react';
 import './FolderSelect.css';
 import { Link } from 'react-router-dom';
-import AddFolder from '../AddFolder/AddFolder'
-
+import NotefulContext from '../../NotefulContext';
 
 class FolderSelect extends React.Component {
     state = {
@@ -11,17 +10,23 @@ class FolderSelect extends React.Component {
         isSelected3: false
     }
 
+    static contextType = NotefulContext;
+
     handleToggle = (e) => {
         this.setState({
             [e.target.name]: [e.target.value]
         })
     }
     render() {
+        const { folders } = this.context.state;
+        console.log(folders);
+        
         return (
             //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
             //the <h4> is wrapped in a <Link> 
             <div className="folderSelect">
-                {this.props.data.map(folder => {
+                <h2>Folders</h2>
+                {folders.map(folder => {
                     return (
                         <Link 
                             to={`/note/${folder.id}`} 
@@ -37,7 +42,7 @@ class FolderSelect extends React.Component {
                             // })}
                             className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
-                        {folder.name}
+                        {folder.id}
                         </h4>
                         </Link> 
                     )     

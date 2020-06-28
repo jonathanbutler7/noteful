@@ -26,7 +26,7 @@ class App extends React.Component {
       },
     })
       .then((res) => res.json())
-      .then(data => this.setState({folders: data.folders}));
+      .then(folders => this.setState({folders}));
 
     fetch("http://localhost:9090/notes", {
       method: "GET",
@@ -58,10 +58,10 @@ class App extends React.Component {
         <NotefulContext.Provider
           value={{ state: this.state, deleteNote: this.deleteNote }}
         >
-          <Header data={dummyStore.folders} title={"Noteful"} />
+          <Header title={"Noteful"} />
           <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route path="/folder" component={FolderRoute} />
+            {/* <Route path="/folder" component={FolderRoute} /> */}
             <Route path="/note/:folderId" component={NoteRoute} />
             <Route path="/add-folder" component={AddFolder} />
             <Route path="/add-note" component={AddNote} />

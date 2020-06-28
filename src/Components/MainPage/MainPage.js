@@ -12,7 +12,7 @@ class MainPage extends React.Component {
                 data={DummyData.folders}
             />
             <NoteDisplay 
-                notes={DummyData.notes}
+                // notes={DummyData.notes}
             />          
         </div>   
         )

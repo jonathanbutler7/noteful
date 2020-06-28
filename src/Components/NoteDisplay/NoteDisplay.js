@@ -19,7 +19,9 @@ class NoteDisplay extends React.Component {
     }
 
     render() {
+        
         const { notes } = this.context.state;
+        
         
         const { folderId } = this.props;
         
