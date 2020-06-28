@@ -21,8 +21,6 @@ class NoteDisplay extends React.Component {
     render() {
         
         const { notes } = this.context.state;
-        
-        
         const { folderId } = this.props;
         
         //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
@@ -53,7 +51,7 @@ class NoteDisplay extends React.Component {
                                 <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
                                 <button 
                                     id="folderDelete"
-                                    onClick={() => this.context.deleteNote(id)}
+                                    // onClick={() => this.context.deleteNote(id)}
                                     onClick={() => this.deleteFromApi(id)}
                                 >
                                     <h5>Delete</h5>

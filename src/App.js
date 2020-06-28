@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import MainPage from "./Components/MainPage/MainPage";
 import { Route, Switch } from "react-router-dom";
-import dummyStore from "./dummy-store";
-import FolderRoute from "./Routes/FolderRoute/FolderRoute";
+// import dummyStore from "./dummy-store";
+// import FolderRoute from "./Routes/FolderRoute/FolderRoute";
 import NoteRoute from "./Routes/NoteRoute/NoteRoute";
 import Error from "./Components/ErrorPage/ErrorPage";
 import Header from "./Components/Header/Header";
@@ -38,6 +38,24 @@ class App extends React.Component {
     .then(notes => this.setState({notes}));
   }
 
+  deleteFolder = (folderId) => {
+    const folders = this.state.folders;
+    let myFilter = folders.filter((folder) => folder.id !== folderId)
+    this.setState({
+      folders: myFilter
+    })
+  }
+
+  addNote = (data) => {
+    this.setState({
+      notes: data
+    })
+  }
+
+  addFolder = (folderId) => {
+    
+  }
+
   deleteNote = (noteId) => {
     const notes = this.state.notes;
     let myFilter = notes.filter((note) => note.id !== noteId);
@@ -56,7 +74,14 @@ class App extends React.Component {
     return (
       <>
         <NotefulContext.Provider
-          value={{ state: this.state, deleteNote: this.deleteNote }}
+          value={{ 
+            state: this.state,
+            addNote: this.addNote,
+            deleteNote: this.deleteNote, 
+            addFolder: this.addFolder,
+            deleteFolder: this.deleteFolder,
+            
+          }}
         >
           <Header title={"Noteful"} />
           <Switch>

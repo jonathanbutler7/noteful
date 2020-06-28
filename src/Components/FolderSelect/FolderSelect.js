@@ -21,7 +21,7 @@ class FolderSelect extends React.Component {
             },
         })
         .then(res => res.json())
-        .then(folder => this.context.deleteFolder(id))
+        .then(data => this.context.deleteFolder(id))
     }
 
     handleToggle = (e) => {
@@ -54,7 +54,7 @@ class FolderSelect extends React.Component {
                             // })}
                             className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
-                        {folder.id}
+                        {folder.name}
                         
                         </h4>
                         <AiFillDelete 
