@@ -2,6 +2,7 @@ import React from 'react';
 import './FolderSelect.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
+import {AiFillDelete} from 'react-icons/ai'
 
 class FolderSelect extends React.Component {
     state = {
@@ -11,6 +12,17 @@ class FolderSelect extends React.Component {
     }
 
     static contextType = NotefulContext;
+
+    deleteFromApi = (id) => {
+        fetch(`http://localhost:9090/folders/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(folder => this.context.deleteFolder(id))
+    }
 
     handleToggle = (e) => {
         this.setState({
@@ -43,7 +55,13 @@ class FolderSelect extends React.Component {
                             className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
                         {folder.id}
+                        
                         </h4>
+                        <AiFillDelete 
+                           onClick={() => this.context.deleteFolder(folder.id)}
+                           onClick={() => this.deleteFromApi(folder.id)} 
+                        />
+                        
                         </Link> 
                     )     
                 })}
