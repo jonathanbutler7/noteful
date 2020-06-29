@@ -8,29 +8,36 @@ export default class AddFolder extends React.Component {
             folderName: ""
         }
     }
-
+    
     updateFolder(folder) {
         this.setState({folderName: folder})
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        
         const folderName = ({
             "name": this.state.folderName
         })
-        console.log(folderName)
-            fetch("http://localhost:9090/folders", {
-              method: "POST",
-              body: JSON.stringify(folderName),
-            //   headers: {
-            //       'content-type': 'applications/json',
-            //   }
-            })
-              .then((res) => res.json())
-              this.props.history.push('/')
-            //   .then(data => {this.state.folderName});
-          }
+        fetch("http://localhost:9090/folders", {
+            method: "POST",
+            body: JSON.stringify(folderName),
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then((res) => window.location.href = '/')
+        .catch(error => {
+            console.error(error)
+        })
+    }
     
     
     render() {

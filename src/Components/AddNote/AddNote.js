@@ -25,17 +25,26 @@ export default class AddNote extends Component {
             "name": this.state.noteName,
             "content": this.state.noteContent
         })
-        console.log(note)
-            fetch("http://localhost:9090/notes", {
-              method: "POST",
-              body: JSON.stringify(note),
-            //   headers: {
-            //       'content-type': 'applications/json',
-            //   }
-            })
-              .then((res) => res.json())
-              .then(data => {this.context.addNote(data)});
-          }
+        fetch("http://localhost:9090/notes", {
+            method: "POST",
+            body: JSON.stringify(note),
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then((res) =>  window.location.href = '/')
+        .catch(error => {
+        console.error(error)
+        })
+    }
     
     
     render() {

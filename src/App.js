@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 import MainPage from "./Components/MainPage/MainPage";
 import { Route, Switch } from "react-router-dom";
-// import dummyStore from "./dummy-store";
-// import FolderRoute from "./Routes/FolderRoute/FolderRoute";
 import NoteRoute from "./Routes/NoteRoute/NoteRoute";
 import Error from "./Components/ErrorPage/ErrorPage";
 import Header from "./Components/Header/Header";
@@ -38,9 +36,17 @@ class App extends React.Component {
     .then(notes => this.setState({notes}));
   }
 
+  deleteNote = (noteId) => {
+    const notes = this.state.notes;
+    let myFilter = notes.filter((note) => note.id !== noteId);
+    this.setState({
+      notes: myFilter,
+    });
+  };
+
   deleteFolder = (folderId) => {
     const folders = this.state.folders;
-    let myFilter = folders.filter((folder) => folder.id !== folderId)
+    let myFilter = folders.filter((folder) => folder.id !== folderId);
     this.setState({
       folders: myFilter
     })
@@ -55,14 +61,6 @@ class App extends React.Component {
   addFolder = (folderId) => {
     
   }
-
-  deleteNote = (noteId) => {
-    const notes = this.state.notes;
-    let myFilter = notes.filter((note) => note.id !== noteId);
-    this.setState({
-      notes: myFilter,
-    });
-  };
 
   render() {
     // this sends data to context. possible to set it from state with this.state

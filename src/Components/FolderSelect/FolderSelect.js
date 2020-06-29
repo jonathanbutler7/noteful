@@ -31,7 +31,6 @@ class FolderSelect extends React.Component {
     }
     render() {
         const { folders } = this.context.state;
-        console.log(folders);
         
         return (
             //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
@@ -44,31 +43,30 @@ class FolderSelect extends React.Component {
                             to={`/note/${folder.id}`} 
                             id="linkItem" key={folder.id}
                             style={{ textDecoration: 'none' }}
-                            
                         >
                         <h4 
                             value={this.state.isSelected1}
                             onClick={e => this.handleToggle(e)}
-                            // onClick={this.props.data.map(id => {
-                            //     return this.props.data.folder
-                            // })}
                             className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
                             key={folder.id}>
                         {folder.name}
-                        
+                            <div className="deleteCorner">
+                                <Link to="/">
+                                    <AiFillDelete
+                                    className="deleteIcon" 
+                                    onClick={() => this.deleteFromApi(folder.id)}
+                                    />
+                                </Link>
+                            </div>
                         </h4>
-                        <AiFillDelete 
-                           onClick={() => this.context.deleteFolder(folder.id)}
-                           onClick={() => this.deleteFromApi(folder.id)} 
-                        />
-                        
+                            
                         </Link> 
                     )     
                 })}
                 <Link to={'/add-folder'} >
-                <button className="addFolderButton">
-                    <h5>Add Folder</h5>
-                </button>
+                    <button className="addFolderButton">
+                        <h5>Add Folder</h5>
+                    </button>
                 </Link>
             </div>
         )

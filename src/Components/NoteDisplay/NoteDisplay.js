@@ -14,6 +14,7 @@ class NoteDisplay extends React.Component {
                 'content-type': 'application/json'
             },
         })
+        
         .then(res => res.json())
         .then(data => this.context.deleteNote(id))
     }
