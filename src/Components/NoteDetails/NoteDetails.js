@@ -7,6 +7,28 @@ export default class NoteDetails extends React.Component {
 
     static contextType = NotefulContext;
 
+    deleteFromApi = (id) => {
+        fetch(`http://localhost:9090/notes/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        // .then(res => res.json())
+        .then(data => this.context.deleteNote(id))
+        .catch(error => {
+            console.error(error)
+        })
+    }
+
     render() {
         
         const { notes } = this.context.state
@@ -26,6 +48,12 @@ export default class NoteDetails extends React.Component {
                         <h2>{foundNote.name}</h2>
                         <p>{foundNote.content}</p>
                         <p>{foundNote.modified}</p>
+                        <button 
+                                    id="folderDelete"
+                                    onClick={() => this.deleteFromApi(foundNote.id)}
+                                >
+                                    <h5>Delete</h5>
+                                </button>
                     </div>
                     )
                 }

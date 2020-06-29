@@ -8,7 +8,8 @@ export default class AddNote extends Component {
         this.state = {
             noteName: "",
             noteContent: "",
-            folderId: ""
+            folderId: "",
+            modified: "",
         }
     }
 
@@ -26,13 +27,20 @@ export default class AddNote extends Component {
         this.setState({folderId: folderId})
     }
 
+    timeStamp() {
+        var time = Date.now()
+        let newMod = new Date(time)
+        this.setState({modified: newMod})
+        return newMod
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
-        
         const note = ({
             "name": this.state.noteName,
             "content": this.state.noteContent,
-            "folderId": this.state.folderId
+            "folderId": this.state.folderId,
+            "modified": this.timeStamp()
         })
         fetch("http://localhost:9090/notes", {
             method: "POST",
@@ -53,11 +61,11 @@ export default class AddNote extends Component {
         .catch(error => {
         console.error(error)
         })
+        
     }
     
     render() {
         const { folders } = this.context.state;
-        console.log(folders);
         
         return (
             <div className="viewport">
