@@ -88,7 +88,7 @@ class App extends React.Component {
             <Route path="/note/:folderId" component={NoteRoute} />
             <Route path="/add-folder" component={AddFolder} />
             <Route path="/add-note" component={AddNote} />
-            <Route path="/note" component={NoteDetails} />
+            {/* <Route path="/note/:noteId" component={NoteDetails} /> */}
             <Route component={Error} />
           </Switch>
         </NotefulContext.Provider>
