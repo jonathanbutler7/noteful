@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NotefulContext from '../../NotefulContext';
 import './AddNote.css'
 
 export default class AddNote extends Component {
@@ -9,6 +10,8 @@ export default class AddNote extends Component {
             noteContent: ""
         }
     }
+
+    static contextType = NotefulContext;
 
     updateNote(note) {
         this.setState({noteName: note})
@@ -63,6 +66,11 @@ export default class AddNote extends Component {
                         placeholder="Name..."
                         onChange={e => this.updateNote(e.target.value)}
                     />
+                    <label htmlFor=""><h4>Select folder:</h4></label>
+                    <select name="select-folder" id="">
+                        <option value="--Select folder--">--Select folder--</option>
+                        <option value=""></option>
+                    </select>
                     <label 
                         className="input" 
                         htmlFor="noteContent"

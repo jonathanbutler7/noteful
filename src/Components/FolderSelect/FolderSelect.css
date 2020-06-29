@@ -47,20 +47,21 @@
 }
 
 .addFolderButton {
-    background-color: white;
+    background-color: #f5f5f5;
     border: 2px solid #424242;
     color: #424242;
     font-family: "arial";
     width: 175px;
     height: 56px;
     /* justify-content: center; */
-    /* text-align: center; */
+    text-decoration: none;
+    text-align: center;
     margin: 0 auto 0 auto;
     cursor: pointer;
-    
 }
 
-button:hover {
+.addFolderButton:hover {
     color: white;
     background-color: #424242;
+    /* justify-content: center; */
 }

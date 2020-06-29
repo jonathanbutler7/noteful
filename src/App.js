@@ -77,18 +77,17 @@ class App extends React.Component {
             addNote: this.addNote,
             deleteNote: this.deleteNote, 
             addFolder: this.addFolder,
-            deleteFolder: this.deleteFolder,
-            
+            deleteFolder: this.deleteFolder
           }}
         >
           <Header title={"Noteful"} />
           <Switch>
             <Route exact path="/" component={MainPage} />
             {/* <Route path="/folder" component={FolderRoute} /> */}
-            <Route path="/note/:folderId" component={NoteRoute} />
+            <Route path="/folder/:folderId" component={NoteRoute} />
             <Route path="/add-folder" component={AddFolder} />
             <Route path="/add-note" component={AddNote} />
-            {/* <Route path="/note/:noteId" component={NoteDetails} /> */}
+            <Route path="/note" component={NoteDetails} />
             <Route component={Error} />
           </Switch>
         </NotefulContext.Provider>

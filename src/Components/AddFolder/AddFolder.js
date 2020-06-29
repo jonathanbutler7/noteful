@@ -39,7 +39,6 @@ export default class AddFolder extends React.Component {
         })
     }
     
-    
     render() {
         return (
             <div className="viewport">
@@ -57,13 +56,14 @@ export default class AddFolder extends React.Component {
                         onChange={e => this.updateFolder(e.target.value)}
                     />
                     <button 
-                        className="addButton"
+                        className="addFolderButton"
                         onClick={e => this.handleSubmit(e)}
-                    ><h5>Add</h5></button>
+                    >
+                        <h5>Add</h5>
+                    </button>
                 </div>
             </div>
         )
     }
     
 }
-

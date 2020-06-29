@@ -10,6 +10,11 @@
     margin: 15px;
 }
 
+.backButton:hover {
+    background-color: #424242;
+    color: white;
+}
+
 .noteDisplay {
     display: flex;
 }
