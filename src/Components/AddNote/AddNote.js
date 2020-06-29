@@ -75,14 +75,18 @@ export default class AddNote extends Component {
                         onChange={e => this.updateNote(e.target.value)}
                     />
                     <label htmlFor=""><h4>Select folder:</h4></label>
-                    <select name="select-folder" id="" onChange={e => this.updateFolderId(e.target.value)}>
+                    <select 
+                        name="select-folder" 
+                        id="" 
+                        onChange={e => this.updateFolderId(e.target.value)}
+                    >
                         <option value="--Select folder--">--Select folder--</option>
                         {folders.map(item => {
                             return (
                                 <option 
                                     id={item.id} 
                                     key={item.id} 
-                                    value=""
+                                    value={item.id}
                                     
                                 >{item.name}</option>
                             )
