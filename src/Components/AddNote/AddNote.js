@@ -7,7 +7,8 @@ export default class AddNote extends Component {
         super(props)
         this.state = {
             noteName: "",
-            noteContent: ""
+            noteContent: "",
+            folderId: ""
         }
     }
 
@@ -21,12 +22,17 @@ export default class AddNote extends Component {
         this.setState({noteContent: note})
     }
 
+    updateFolderId(folderId) {
+        this.setState({folderId: folderId})
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         
         const note = ({
             "name": this.state.noteName,
-            "content": this.state.noteContent
+            "content": this.state.noteContent,
+            "folderId": this.state.folderId
         })
         fetch("http://localhost:9090/notes", {
             method: "POST",
@@ -49,8 +55,10 @@ export default class AddNote extends Component {
         })
     }
     
-    
     render() {
+        const { folders } = this.context.state;
+        console.log(folders);
+        
         return (
             <div className="viewport">
                 <h2>Add Note:</h2>
@@ -67,9 +75,18 @@ export default class AddNote extends Component {
                         onChange={e => this.updateNote(e.target.value)}
                     />
                     <label htmlFor=""><h4>Select folder:</h4></label>
-                    <select name="select-folder" id="">
+                    <select name="select-folder" id="" onChange={e => this.updateFolderId(e.target.value)}>
                         <option value="--Select folder--">--Select folder--</option>
-                        <option value=""></option>
+                        {folders.map(item => {
+                            return (
+                                <option 
+                                    id={item.id} 
+                                    key={item.id} 
+                                    value=""
+                                    
+                                >{item.name}</option>
+                            )
+                        })}
                     </select>
                     <label 
                         className="input" 

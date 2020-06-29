@@ -39,8 +39,11 @@ class FolderSelect extends React.Component {
       selectedFolder: folderId,
     });
   };
+
   render() {
     const { folders } = this.context.state;
+
+    
 
     return (
       //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
