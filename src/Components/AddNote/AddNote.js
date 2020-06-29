@@ -28,8 +28,8 @@ export default class AddNote extends Component {
     }
 
     timeStamp() {
-        var time = Date.now()
-        let newMod = new Date(time)
+        var newMod = Date.now()
+        // let newMod = new Date(time)
         this.setState({modified: newMod})
         return newMod
     }
@@ -106,15 +106,18 @@ export default class AddNote extends Component {
                     >
                         <h4>Content:</h4> 
                     </label>
-                    <input 
+                    <textarea 
                         type="textarea"
+                        id="textarea"
                         placeholder="Content..."
                         onChange={e => this.updateNoteContent(e.target.value)}
                     />
                     <button 
                         className="addButton"
                         onClick={e => this.handleSubmit(e)}
-                    ><h5>Add</h5></button>
+                    >
+                        <h5>Add</h5>
+                    </button>
                 </div>
             </div>
         )

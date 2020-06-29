@@ -17,6 +17,12 @@
     margin: 0 auto;
 }
 
-input, label {
+#textarea {
+    max-width: 250px;
     margin-bottom: 15px;
+}
+
+.addButton:hover {
+    color: white;
+    background-color: #454545;
 }

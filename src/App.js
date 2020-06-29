@@ -63,11 +63,6 @@ class App extends React.Component {
   }
 
   render() {
-    // this sends data to context. possible to set it from state with this.state
-    // const notefulContextValue = {
-    //   notes: dummyStore.notes,
-    //   folders: dummyStore.folders
-    // };
 
     return (
       <>

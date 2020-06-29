@@ -1,6 +1,7 @@
 import React from 'react'
 import NotefulContext from '../../NotefulContext'
 import FolderSelect from '../FolderSelect/FolderSelect';
+import NoteDisplay from '../NoteDisplay/NoteDisplay'
 import "./NoteDetails.css"
 
 export default class NoteDetails extends React.Component {
@@ -35,25 +36,33 @@ export default class NoteDetails extends React.Component {
         const params = this.props.location.search
         let noteName = params.split('=')[1]
         let foundNote = notes.find(item => item.name === noteName)
-        console.log(foundNote);
+        console.log('found note is ', foundNote);
+        // console.log(foundNote.content);
         
         
+        
+        // let newMod = new Date(foumodified)
+        // let month = newMod.getMonth()
+        // let day = newMod.getDay()
+        // let year = newMod.getFullYear()
 
         return (
             <div className="mainDisplay">
                 <FolderSelect />
+                <NoteDisplay />
                 {
                     foundNote && (
                     <div className="note__box">
                         <h2>{foundNote.name}</h2>
                         <p>{foundNote.content}</p>
+                    <p>in: {foundNote.folderId}</p>
                         <p>{foundNote.modified}</p>
                         <button 
-                                    id="folderDelete"
-                                    onClick={() => this.deleteFromApi(foundNote.id)}
-                                >
-                                    <h5>Delete</h5>
-                                </button>
+                            id="folderDelete"
+                            onClick={() => this.deleteFromApi(foundNote.id)}
+                        >
+                            <h5>Delete</h5>
+                        </button>
                     </div>
                     )
                 }

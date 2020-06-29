@@ -49,6 +49,7 @@ class NoteDisplay extends React.Component {
         return (
                 <div className="noteBox">
                     {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
+                    <h2>Notes in {notesList.name}</h2>
                     {newNotesList.map(({id, name, modified}) => {
                         let newMod = new Date(modified)
                         let month = newMod.getMonth()
