@@ -6,7 +6,7 @@ import {AiFillDelete} from 'react-icons/ai'
 
 class FolderSelect extends React.Component {
     state = {
-        isSelected1: false,
+        isSelected: false,
         isSelected2: false,
         isSelected3: false
     }
@@ -37,7 +37,8 @@ class FolderSelect extends React.Component {
 
     handleToggle = (e) => {
         this.setState({
-            [e.target.name]: [e.target.value]
+            // [e.target.name]: [e.target.value]
+            isSelected: !this.state.isSelected
         })
     }
     render() {
@@ -58,14 +59,15 @@ class FolderSelect extends React.Component {
                         <h4 
                             value={this.state.isSelected1}
                             onClick={e => this.handleToggle(e)}
-                            className={this.state.isSelected1 ? "folderItemSelected" : "folderItem"} 
-                            key={folder.id}>
+                            className={this.state.isSelected ? "folderItemSelected" : "folderItem"} 
+                            key={folder.id}
+                        >
                         {folder.name}
                             <div className="deleteCorner">
                                 <Link to="/">
                                     <AiFillDelete
-                                    className="deleteIcon" 
-                                    onClick={() => this.deleteFromApi(folder.id)}
+                                        className="deleteIcon" 
+                                        onClick={() => this.deleteFromApi(folder.id)}
                                     />
                                 </Link>
                             </div>

@@ -24,6 +24,8 @@
     text-align: center;
     color: white;
     margin-bottom: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .folderItem:hover {
