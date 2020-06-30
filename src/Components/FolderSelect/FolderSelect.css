@@ -16,6 +16,12 @@
     justify-content: space-between;
 }
 
+#linkItem {
+    height: 53px;
+    margin: 0 auto 25px auto;
+    border: 2px solid red;
+}
+
 .folderItemSelected {
     border: 2px solid #424242;
     background-color: #424242;
