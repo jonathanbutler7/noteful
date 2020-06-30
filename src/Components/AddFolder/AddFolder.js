@@ -13,8 +13,14 @@ export default class AddFolder extends React.Component {
         this.setState({folderName: folder})
     }
 
+    validateFolderEntry() {
+        const title = this.state.folderName
+        !title ? console.log('blank') : this.handleSubmit()
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
+        // validateFolder()
         const folderName = ({
             "name": this.state.folderName
         })
@@ -59,7 +65,7 @@ export default class AddFolder extends React.Component {
                     />
                     <button 
                         className="addFolderButton"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.validateFolderEntry(e)}
                     >
                         <h5>Add</h5>
                     </button>
@@ -67,5 +73,4 @@ export default class AddFolder extends React.Component {
             </div>
         )
     }
-    
 }

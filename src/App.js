@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import MainPage from "./Components/MainPage/MainPage";
+import StartPage from "./Components/StartPage/StartPage";
 import { Route, Switch } from "react-router-dom";
 import NoteRoute from "./Routes/NoteRoute/NoteRoute";
 import Error from "./Components/ErrorPage/ErrorPage";
@@ -78,8 +78,8 @@ class App extends React.Component {
         >
           <Header title={"Noteful"} />
           <Switch>
-            <Route exact path="/" component={MainPage} />
-            {/* <Route path="/folder" component={FolderRoute} /> */}
+            <Route exact path="/" component={
+              StartPage} />
             <Route path="/folder/:folderId" component={NoteRoute} />
             <Route path="/add-folder" component={AddFolder} />
             <Route path="/add-note" component={AddNote} />

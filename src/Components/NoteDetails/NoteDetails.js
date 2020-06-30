@@ -37,11 +37,16 @@ export default class NoteDetails extends React.Component {
         const params = this.props.location.search
         let noteName = params.split('=')[1]
         let foundNote = notes.find(item => item.name === noteName)
+        if (foundNote) {
+        let newMod = new Date(foundNote.modified)
+        console.log(newMod);
         
-        // let newMod = new Date(foumodified)
         // let month = newMod.getMonth()
         // let day = newMod.getDay()
         // let year = newMod.getFullYear()
+        }
+        
+        
 
         return (
             <div className="fullDisplay">
@@ -52,9 +57,6 @@ export default class NoteDetails extends React.Component {
                     <div className="note__box">
                         <h2>{foundNote.name}</h2>
                         <p>{foundNote.content}</p>
-                        {
-                            
-                        }
                         <p>{foundNote.modified}</p>
                         <button 
                             id="folderDelete"
@@ -64,10 +66,7 @@ export default class NoteDetails extends React.Component {
                         </button>
                     </div>
                     )
-                }
-                    
-                    
-                
+                } 
             </div>
         )
     }
