@@ -49,14 +49,13 @@ export default class NoteDetails extends React.Component {
 
         return (
             <div className="fullDisplay">
-                <FolderSelect />
+                <FolderSelect onFolderSelect={this.props.selectFolder()} />
                 <NoteDisplay />
                 {
                     foundNote && (
                     <div className="note__box">
                         <h2>{foundNote.name}</h2>
                         <p>{foundNote.content}</p>
-                        {/* <p>{foundNote.modified}</p> */}
                         <p>Last modified {readableDate}</p>
                         <button 
                             id="folderDelete"

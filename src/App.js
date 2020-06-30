@@ -87,10 +87,10 @@ class App extends React.Component {
               StartPage} />
             <Route path="/folder/:folderId" component={NoteRoute} />
             {/* //render props pattern,, instead of component attribute, have a render attribute which calls the component. call that function inside add folder compoment, and give it props from react router and selected oflder */}
-            {/* <Route path="/add-folder" component={AddFolder}  /> */}
-            <Route path="/add-folder" render={() => <AddFolder onFolderSelect={selectFolder} />} />
+            <Route path="/add-folder" component={AddFolder}  />
+            {/* <Route path="/add-folder" render={() => <AddFolder onFolderSelect={selectFolder} />} /> */}
             <Route path="/add-note" component={AddNote} />
-            <Route path="/note" component={NoteDetails} />
+            <Route path="/note" render={() => <NoteDetails onFolderSelect={selectFolder()} />}/>
             <Route component={Error} />
           </Switch>
         </NotefulContext.Provider>
