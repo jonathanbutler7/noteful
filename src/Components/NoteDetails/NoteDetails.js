@@ -33,12 +33,10 @@ export default class NoteDetails extends React.Component {
     render() {
         
         const { notes } = this.context.state
-        const { folders } = this.context.state
+        // const { folders } = this.context.state
         const params = this.props.location.search
         let noteName = params.split('=')[1]
         let foundNote = notes.find(item => item.name === noteName)
-        console.log('found note is ', foundNote);
-        console.log(folders);
         
         // let newMod = new Date(foumodified)
         // let month = newMod.getMonth()

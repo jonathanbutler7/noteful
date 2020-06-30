@@ -32,79 +32,58 @@ class NoteDisplay extends React.Component {
     render() {
         const { notes: notesList } = this.context.state;
         const { folderId } = this.props;
-        const { folders } = this.context.state 
+        const { folders } = this.context.state
         //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
         //props is an object with 14 items from dummydata
-        
+
         //save newNotes and notes to be equal
         let newNotesList = notesList;
-        
+
         //if there is a folderId (in the array from props), then filter through notes and return only the new notes with that folder Id, then store notes with that Id in newNotes
-        
-        
+
+
         if (folderId) {
             newNotesList = newNotesList.filter(function(note) {
                 return note.folderId === folderId
             })
         }
-
-        console.log('folders is', folders);
-        console.log('folderId is', folderId);
-        
-        
-        
        let folderNameMatch = folders.find(item => item.id === folderId)
-       console.log('folderNameMatch is', folderNameMatch);
-       
-        
-        
-        // console.log(folderId)
+
         return (
-            {
-                if (folders.length === 0) {
-                 (<></>) 
-                } else {
-                 // Your existing content
-                 <div className="noteBox" key="">
-                 {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
-                 <h2>Notes in </h2>
-                 {newNotesList.map(({id, name, modified}) => {
-                     let newMod = new Date(modified)
-                     let month = newMod.getMonth()
-                     let day = newMod.getDay()
-                     let year = newMod.getFullYear()
-                     return (
-                         
-                         <Link to={`/note?name=${name}`} key={id} name={id}>
-                             <div className="note" key={id}>
-                                 <h2 className="noteTitle">{name}</h2>
-                                 <div className="noteDetails">
-                                     <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
-                                     <button 
-                                         id="folderDelete"
-                                         // onClick={() => this.context.deleteNote(id)}
-                                         onClick={() => this.deleteFromApi(id)}
-                                     >
-                                         <h5>Delete</h5>
-                                     </button>
-                                 </div>
-                             </div>
-                         </Link>
-                     )
-                 })}
-                 <Link 
-                     to={'/add-note'} 
-                     className="addFolderButton"
-                     name="addNoteButton"
-                 >
-                         <h5>Add note</h5>
-                 </Link>
-             </div>
-                }
-            }
-                
-            
-        )
+            <div className="noteBox">
+                {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
+                <h4>{!folderNameMatch ? '' : `Notes in ${folderNameMatch.name} folder`}</h4>
+                {newNotesList != null && newNotesList.map(({id, name, modified}) => {
+                    let newMod = new Date(modified)
+                    let month = newMod.getMonth()
+                    let day = newMod.getDay()
+                    let year = newMod.getFullYear()
+                    return (
+                        <Link to={`/note?name=${name}`} key={id}>
+                            <div className="note" key={id}>
+                                <h2 className="noteTitle">{name}</h2>
+                                <div className="noteDetails">
+                                    <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
+                                    <button
+                                        id="folderDelete"
+                                        // onClick={() => this.context.deleteNote(id)}
+                                        onClick={() => this.deleteFromApi(id)}
+                                    >
+                                        <h5>Delete</h5>
+                                    </button>
+                                </div>
+                            </div>
+                        </Link>
+                    )
+                })}
+                <Link
+                    to={'/add-note'}
+                    className="addFolderButton"
+                >
+                        <h5>Add note</h5>
+                </Link>
+            </div>
+    )
     }
 }
 

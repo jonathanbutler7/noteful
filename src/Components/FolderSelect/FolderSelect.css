@@ -47,7 +47,6 @@
     color: black;
 }
 
-
 .deleteIcon:hover {
     color: red;
 }
@@ -59,10 +58,9 @@
     font-family: "arial";
     width: 175px;
     height: 56px;
-    
     text-decoration: none;
     text-align: center;
-    margin: 0 auto 0 auto;
+    margin: 10px auto 0 auto;
     cursor: pointer;
 }
 

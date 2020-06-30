@@ -13,7 +13,8 @@ import AddNote from './Components/AddNote/AddNote'
 class App extends React.Component {
   state = {
     notes: [],
-    folders: []
+    folders: [],
+    folderId: []
   };
 
   componentDidMount() {
