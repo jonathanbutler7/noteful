@@ -33,6 +33,7 @@ class NoteDisplay extends React.Component {
         
         const { notes: notesList } = this.context.state;
         const { folderId } = this.props;
+        const { folders } = this.context.state 
         //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
         //props is an object with 14 items from dummydata
         
@@ -45,32 +46,40 @@ class NoteDisplay extends React.Component {
                 return note.folderId === folderId
             })
         }
+        console.log(folders);
+        
+        if (folders) {
+            let folderName = folders.find(item => item.id)
+        }
+        
+        
         // console.log(folderId)
         return (
                 <div className="noteBox">
                     {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
-                    <h2>Notes in {notesList.name}</h2>
+                    <h2>Notes in {this.props.name}</h2>
                     {newNotesList.map(({id, name, modified}) => {
                         let newMod = new Date(modified)
                         let month = newMod.getMonth()
                         let day = newMod.getDay()
                         let year = newMod.getFullYear()
                         return (
-                        <div className="note" key={id}>
                             <Link to={`/note?name=${name}`}>
-                                <h2 className="noteTitle">{name}</h2>
+                                <div className="note" key={id}>
+                                    <h2 className="noteTitle">{name}</h2>
+                                    <div className="noteDetails">
+                                        <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
+                                        <button 
+                                            id="folderDelete"
+                                            // onClick={() => this.context.deleteNote(id)}
+                                            onClick={() => this.deleteFromApi(id)}
+                                        >
+                                            <h5>Delete</h5>
+                                        </button>
+                                    </div>
+                                </div>
                             </Link>
-                            <div className="noteDetails">
-                                <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
-                                <button 
-                                    id="folderDelete"
-                                    // onClick={() => this.context.deleteNote(id)}
-                                    onClick={() => this.deleteFromApi(id)}
-                                >
-                                    <h5>Delete</h5>
-                                </button>
-                            </div>
-                        </div>)
+                        )
                     })}
                     <Link 
                         to={'/add-note'} 

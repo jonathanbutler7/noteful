@@ -1,7 +1,7 @@
 .header {
-    color: #424242;
+    color: black;
     border-bottom: #424242 2px solid;
-    background-color: #F5F5F5;
+    background-color: none;
     /* display: flex;
     flex-direction: center; */
     /* margin: 0 auto; */
@@ -10,12 +10,28 @@
     padding: 10px;
   }
 
-  .headerTitle {
-      border: none;
-      background-color: #F5F5F5;
-      margin: 0 auto;
-      justify-content: center;
-      width: 156px;
-      height: 75px;
-      
+  .header:hover {
+    background-color: white;
+    color: black;
   }
+
+/* 
+#headerButton {
+border: none; 
+background-color: #F5F5F5;
+}
+
+a:hover {
+    background-color: none;
+    cursor: pointer;
+}
+
+  #headerTitle:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .header:hover {
+      background-color: white;
+      color: black;
+  } */

@@ -7,3 +7,7 @@
 .addFolderButton {
     background-color: white;
 }
+
+#folderNameEntry {
+    margin-bottom: 15px;
+}

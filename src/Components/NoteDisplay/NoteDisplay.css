@@ -17,6 +17,20 @@
     margin: 15px;
 }
 
+a {
+    text-decoration: none;
+    color: black
+}
+
+.note:hover {
+    color: black;
+    background-color: white;
+}
+
+a:visited {
+    color: black;
+}
+
 .noteDetails {
     display: flex;
     flex-direction: row;

@@ -28,8 +28,8 @@ export default class AddNote extends Component {
     }
 
     timeStamp() {
-        var newMod = Date.now()
-        // let newMod = new Date(time)
+        var time = Date.now()
+        let newMod = new Date(time)
         this.setState({modified: newMod})
         return newMod
     }
@@ -57,7 +57,7 @@ export default class AddNote extends Component {
             }
             return res.json()
         })
-        .then((res) =>  window.location.href = '/')
+        .then((res) =>  window.location.href = `/folder/${this.state.folderId}`)
         .catch(error => {
         console.error(error)
         })
