@@ -79,7 +79,7 @@ class FolderSelect extends React.Component {
             </Link>
           );
         })}
-        <Link to={"/add-folder"} className="addFolderButton">
+        <Link to={"/add-folder"} className="addFolderButton" name="addFolderLink">
           <h5>Add Folder</h5>
         </Link>
       </div>

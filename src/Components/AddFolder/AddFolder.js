@@ -54,6 +54,7 @@ export default class AddFolder extends React.Component {
                         type="text"
                         placeholder="Folder name..."
                         id="folderNameEntry"
+                        name="folderName"
                         onChange={e => this.updateFolder(e.target.value)}
                     />
                     <button 

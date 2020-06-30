@@ -79,13 +79,14 @@ export default class AddNote extends Component {
                     </label>
                     <input 
                         type="text"
+                        name="noteName"
                         placeholder="Name..."
                         onChange={e => this.updateNote(e.target.value)}
                     />
-                    <label htmlFor=""><h4>Select folder:</h4></label>
+                    <label htmlFor="select-folder"><h4>Select folder:</h4></label>
                     <select 
                         name="select-folder" 
-                        id="" 
+                        id="select-folder"
                         onChange={e => this.updateFolderId(e.target.value)}
                     >
                         <option value="--Select folder--">--Select folder--</option>
@@ -109,6 +110,7 @@ export default class AddNote extends Component {
                     <textarea 
                         type="textarea"
                         id="textarea"
+                        name="noteContent"
                         placeholder="Content..."
                         onChange={e => this.updateNoteContent(e.target.value)}
                     />
