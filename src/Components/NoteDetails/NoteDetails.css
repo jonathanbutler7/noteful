@@ -1,10 +1,17 @@
 .note__box {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        max-width: 400px;
-        margin: 15px;
+        /* width: 100%; */
+        max-width: 300px;
+        /* margin-left: 0; */
         border: solid 2px #424242;
         background-color: #F5F5F5;
         padding: 25px;
+        margin: 15px;
+}
+
+.fullDisplay {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: space-between; */
 }

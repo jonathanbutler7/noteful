@@ -6,16 +6,16 @@ import FolderSelect from '../../Components/FolderSelect/FolderSelect'
 
 export default function NoteRoute(props) {
     return ( 
-        <div className="noteDisplay">
+        <div className="mainDisplay">
             <FolderSelect 
                 // data={dummyStore.folders}
             />
-            <button 
+            {/* <button 
                 className="backButton"
                 onClick={() => {props.history.push("/")}}
             >
                 <h5>Go Back</h5>
-            </button>
+            </button> */}
             <NoteDisplay
              folderId={props.match.params.folderId}
             />

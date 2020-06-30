@@ -46,7 +46,7 @@ export default class NoteDetails extends React.Component {
         // let year = newMod.getFullYear()
 
         return (
-            <div className="mainDisplay">
+            <div className="fullDisplay">
                 <FolderSelect />
                 <NoteDisplay />
                 {
