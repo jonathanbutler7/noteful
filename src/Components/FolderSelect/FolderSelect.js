@@ -63,7 +63,7 @@ class FolderSelect extends React.Component {
             >
               <h4
                 value={this.state.isSelected1}
-                onClick={(e) => this.handleToggle(e, folder.id)}
+                onClick={(e) => this.props.selectFolder(e)}
                 className={
                   this.state.selectedFolder === folder.id
                     ? "folderItemSelected"

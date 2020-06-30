@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext';
 import './AddNote.css'
+import ValidationError from '../ValidationError/ValidationError'
 
 export default class AddNote extends Component {
     constructor(props) {
@@ -10,6 +11,8 @@ export default class AddNote extends Component {
             noteContent: "",
             folderId: "",
             modified: "",
+            value: "",
+            errorMsg: "",
         }
     }
 
@@ -32,6 +35,11 @@ export default class AddNote extends Component {
         let newMod = new Date(time)
         this.setState({modified: newMod})
         return newMod
+    }
+
+    validateFolderEntry(e) {
+        const textPresent = this.state.value
+        !textPresent ? this.setState({errorMsg: "all fields are required"}) : this.handleSubmit(e)
     }
 
     handleSubmit = (e) => {
@@ -83,6 +91,7 @@ export default class AddNote extends Component {
                         placeholder="Name..."
                         onChange={e => this.updateNote(e.target.value)}
                     />
+                    {/* {!this.state.value && this.state.errorMsg && <ValidationError message={this.state.errorMsg}/>} */}
                     <label htmlFor="select-folder"><h4>Select folder:</h4></label>
                     <select 
                         name="select-folder" 
@@ -114,9 +123,10 @@ export default class AddNote extends Component {
                         placeholder="Content..."
                         onChange={e => this.updateNoteContent(e.target.value)}
                     />
+                    {!this.state.value && this.state.errorMsg && <ValidationError message={this.state.errorMsg}/>}
                     <button 
                         className="addButton"
-                        onClick={e => this.handleSubmit(e)}
+                        onClick={e => this.validateFolderEntry(e)}
                     >
                         <h5>Add</h5>
                     </button>
