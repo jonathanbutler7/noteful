@@ -42,15 +42,18 @@ class FolderSelect extends React.Component {
 
   render() {
     const { folders } = this.context.state;
-
+    console.log(folders);
     
-
+    
+    
     return (
       //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
       //the <h4> is wrapped in a <Link>
       <div className="folderSelect">
         <h2>Folders</h2>
         {folders.map((folder) => {
+          console.log(this.state.selectedFolder);
+          
           return (
             <Link
               to={`/folder/${folder.id}`}

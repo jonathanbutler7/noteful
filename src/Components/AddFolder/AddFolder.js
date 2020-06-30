@@ -1,26 +1,31 @@
 import React from 'react'
 import './AddFolder.css'
+import ValidationError from '../ValidationError/ValidationError'
 
 export default class AddFolder extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            folderName: ""
+            folderName: "",
+            value: false,
+            errorMsg: ""
         }
     }
     
     updateFolder(folder) {
-        this.setState({folderName: folder})
+        this.setState({
+            folderName: folder,
+            value: true
+        })
     }
 
-    validateFolderEntry() {
-        const title = this.state.folderName
-        !title ? console.log('blank') : this.handleSubmit()
+    validateFolderEntry(e) {
+        const textPresent = this.state.value
+        !textPresent ? this.setState({errorMsg: "please enter some text"}) : this.handleSubmit(e)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // validateFolder()
         const folderName = ({
             "name": this.state.folderName
         })
@@ -46,6 +51,7 @@ export default class AddFolder extends React.Component {
     }
     
     render() {
+        
         return (
             <div className="viewport">
                 <h2>Add Folder:</h2>
@@ -56,13 +62,16 @@ export default class AddFolder extends React.Component {
                     >
                         <h4>Folder name:</h4>
                     </label>
+                    
                     <input 
                         type="text"
                         placeholder="Folder name..."
                         id="folderNameEntry"
                         name="folderName"
                         onChange={e => this.updateFolder(e.target.value)}
+                        
                     />
+                    {!this.state.value && this.state.errorMsg && <ValidationError message={this.state.errorMsg}/>}
                     <button 
                         className="addFolderButton"
                         onClick={e => this.validateFolderEntry(e)}

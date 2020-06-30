@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ValidationError.css"
 
 export default function ValidationError(props) {
     if(props.message) {

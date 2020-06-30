@@ -14,8 +14,10 @@ class App extends React.Component {
   state = {
     notes: [],
     folders: [],
-    folderId: []
+    folderId: [],
+    selectedFolder: null
   };
+
 
   componentDidMount() {
     fetch("http://localhost:9090/folders", {
@@ -64,7 +66,10 @@ class App extends React.Component {
   }
 
   render() {
-
+    const selectFolder = (selectedFolderId) => {
+      this.setState({selectedFolder: selectedFolderId})
+    }
+  
     return (
       <>
         <NotefulContext.Provider
@@ -81,7 +86,8 @@ class App extends React.Component {
             <Route exact path="/" component={
               StartPage} />
             <Route path="/folder/:folderId" component={NoteRoute} />
-            <Route path="/add-folder" component={AddFolder} />
+            {/* //render props pattern,, instead of component attribute, have a render attribute which calls the component. call that function inside add folder compoment, and give it props from react router and selected oflder */}
+            <Route path="/add-folder" component={AddFolder}  />
             <Route path="/add-note" component={AddNote} />
             <Route path="/note" component={NoteDetails} />
             <Route component={Error} />
