@@ -41,29 +41,31 @@ class NoteDisplay extends React.Component {
         let newNotesList = notesList;
         
         //if there is a folderId (in the array from props), then filter through notes and return only the new notes with that folder Id, then store notes with that Id in newNotes
+        console.log(folderId);
+        
         if (folderId) {
             newNotesList = newNotesList.filter(function(note) {
                 return note.folderId === folderId
             })
         }
-        console.log(folders);
         
-        if (folders) {
-            let folderName = folders.find(item => item.id)
-        }
+       let folderNameMatch = folders.find(item => item.id === folderId)
+    //    console.log(folderNameMatch);
+       
         
         
         // console.log(folderId)
         return (
                 <div className="noteBox">
                     {/* this JSX maps over either notes or newNotes and returns a <div> with the note name and last modified in FolderSelect */}
-                    <h2>Notes in {this.props.name}</h2>
+                    <h2>Notes in {folderNameMatch.id}</h2>
                     {newNotesList.map(({id, name, modified}) => {
                         let newMod = new Date(modified)
                         let month = newMod.getMonth()
                         let day = newMod.getDay()
                         let year = newMod.getFullYear()
                         return (
+                            
                             <Link to={`/note?name=${name}`}>
                                 <div className="note" key={id}>
                                     <h2 className="noteTitle">{name}</h2>

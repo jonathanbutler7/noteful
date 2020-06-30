@@ -17,9 +17,9 @@
 }
 
 #linkItem {
-    height: 53px;
+    height: 70px;
     margin: 0 auto 25px auto;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .folderItemSelected {
@@ -59,7 +59,7 @@
     font-family: "arial";
     width: 175px;
     height: 56px;
-    /* justify-content: center; */
+    
     text-decoration: none;
     text-align: center;
     margin: 0 auto 0 auto;
@@ -69,5 +69,5 @@
 .addFolderButton:hover {
     color: white;
     background-color: #424242;
-    /* justify-content: center; */
+    
 }
