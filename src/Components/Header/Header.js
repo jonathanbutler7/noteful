@@ -8,8 +8,8 @@ export default function Header(props) {
     }
     return (
     // <Link to={"/"} name="linkToHome">
-      <div onClick={goBackToHome}>
-        <header className="header">
+      <div className="header" onClick={goBackToHome}>
+        <header >
           <h1 id="headerButton">{props.title}</h1>
         </header>
       </div>
