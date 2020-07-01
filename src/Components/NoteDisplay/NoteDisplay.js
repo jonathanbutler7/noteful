@@ -41,7 +41,6 @@ class NoteDisplay extends React.Component {
 
         //if there is a folderId (in the array from props), then filter through notes and return only the new notes with that folder Id, then store notes with that Id in newNotes
 
-
         if (folderId) {
             newNotesList = newNotesList.filter(function(note) {
                 return note.folderId === folderId

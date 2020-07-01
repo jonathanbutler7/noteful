@@ -36,22 +36,17 @@ class FolderSelect extends React.Component {
 
   handleToggle = (e, folderId) => {
     this.setState({
-      // [e.target.name]: [e.target.value]
       selectedFolder: folderId,
     });
   };
 
   render() {
     const { folders } = this.context.state;
-    console.log(this.props);
     
     return (
-      //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
-      //the <h4> is wrapped in a <Link>
       <div className="folderSelect">
         <h2>Folders</h2>
         {folders.map((folder) => {
-          console.log(this.props.match.params.folderId);
           
           return (
             <Link
