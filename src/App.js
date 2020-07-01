@@ -9,14 +9,14 @@ import NotefulContext from "./NotefulContext";
 import AddFolder from "./Components/AddFolder/AddFolder";
 import NoteDetails from "./Components/NoteDetails/NoteDetails";
 import AddNote from "./Components/AddNote/AddNote";
-// import { withRouter } from "react-router";
+import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
 
 class App extends React.Component {
   state = {
     notes: [],
     folders: [],
     folderId: [],
-    selectedFolder: null,
+    selectedFolder: "",
   };
 
   componentDidMount() {
@@ -61,12 +61,13 @@ class App extends React.Component {
     });
   };
 
-  addFolder = (folderId) => {};
+  // addFolder = (folderId) => {};
 
   render() {
     const selectFolder = (selectedFolderId) => {
       this.setState({ selectedFolder: selectedFolderId });
     };
+    console.log(this.state);
 
     return (
       <BrowserRouter>
@@ -80,26 +81,27 @@ class App extends React.Component {
           }}
         >
           <Header title={"Noteful"} />
-          <Switch>
-            <Route exact path="/" component={StartPage} />
-            <Route path="/folder/:folderId" component={NoteRoute} />
-            {/* //render props pattern,, instead of component attribute, have a render attribute which calls the component. call that function inside add folder compoment, and give it props from react router and selected oflder */}
-            <Route path="/add-folder" component={AddFolder} />
-            {/* <Route path="/add-folder" render={() => <AddFolder onFolderSelect={selectFolder} />} /> */}
-            <Route path="/add-note" component={AddNote} />
-            <Route
-              path="/note"
-              render={(routeProps) => (
-                <NoteDetails
-                  //route props object with location, history, and match
-                  {...routeProps}
-                  onFolderSelect={selectFolder}
-                  isSelected={this.state.selectedFolder}
-                />
-              )}
-            />
-            <Route component={Error} />
-          </Switch>
+          <ErrorBoundary>
+            <Switch>
+              <Route exact path="/" component={StartPage} />
+              <Route path="/folder/:folderId" component={NoteRoute} />
+              {/* //render props pattern,, instead of component attribute, have a render attribute which calls the component. call that function inside add folder compoment, and give it props from react router and selected folder */}
+              <Route path="/add-folder" component={AddFolder} />
+              <Route path="/add-note" component={AddNote} />
+              <Route
+                path="/note"
+                render={(routeProps) => (
+                  <NoteDetails
+                    //route props object with location, history, and match
+                    {...routeProps}
+                    onFolderSelect={selectFolder}
+                    isSelected={this.state.selectedFolder}
+                  />
+                )}
+              />
+              <Route component={Error} />
+            </Switch>
+          </ErrorBoundary>
         </NotefulContext.Provider>
       </BrowserRouter>
     );

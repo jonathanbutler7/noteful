@@ -3,6 +3,7 @@ import NotefulContext from "../../NotefulContext";
 import FolderSelect from "../FolderSelect/FolderSelect";
 import NoteDisplay from "../NoteDisplay/NoteDisplay";
 import "./NoteDetails.css";
+import PropTypes from 'prop-types';
 
 export default class NoteDetails extends React.Component {
   static contextType = NotefulContext;
@@ -32,7 +33,6 @@ export default class NoteDetails extends React.Component {
   render() {
     const { notes } = this.context.state;
     // const { folders } = this.context.state
-    console.log(this.props.selectedFolder);
     const params = this.props.location.search;
 
     let noteName = params.split("=")[1];
@@ -69,4 +69,8 @@ export default class NoteDetails extends React.Component {
       </div>
     );
   }
+}
+
+NoteDetails.propTypes = {
+  name: PropTypes.string
 }

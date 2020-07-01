@@ -3,7 +3,7 @@ import "./FolderSelect.css";
 import { Link } from "react-router-dom";
 import NotefulContext from "../../NotefulContext";
 import { AiFillDelete } from "react-icons/ai";
-import { withRouter } from 'react-router'
+import { withRouter } from "react-router";
 
 class FolderSelect extends React.Component {
   state = {
@@ -42,18 +42,18 @@ class FolderSelect extends React.Component {
 
   render() {
     const { folders } = this.context.state;
-    
+
     return (
       <div className="folderSelect">
         <h2>Folders</h2>
         {folders.map((folder) => {
-          
           return (
             <Link
               to={`/folder/${folder.id}`}
               id="linkItem"
               key={folder.id}
               style={{ textDecoration: "none" }}
+              name="linkToFolderContents"
             >
               <h4
                 value={this.state.isSelected1}
@@ -76,7 +76,11 @@ class FolderSelect extends React.Component {
             </Link>
           );
         })}
-        <Link to={"/add-folder"} className="addFolderButton" name="addFolderLink">
+        <Link
+          to={"/add-folder"}
+          className="addFolderButton"
+          name="addFolderLink"
+        >
           <h5>Add Folder</h5>
         </Link>
       </div>

@@ -13,11 +13,12 @@
 .addNoteForm {
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: 175px;
     margin: 0 auto;
 }
 
 #textarea {
+    min-width: 169px;
     max-width: 250px;
     margin-bottom: 15px;
 }
