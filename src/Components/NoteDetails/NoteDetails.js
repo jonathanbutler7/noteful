@@ -46,10 +46,12 @@ export default class NoteDetails extends React.Component {
         let year = newMod.getFullYear()
         readableDate = `${month + 1}/${day + 1}/${year + 1}`
         }
+        
+        
 
         return (
             <div className="fullDisplay">
-                <FolderSelect onFolderSelect={this.props.selectFolder()} />
+                <FolderSelect onFolderSelect={this.props.selectFolder} isSelected={this.props.selectedFolder} />
                 <NoteDisplay />
                 {
                     foundNote && (

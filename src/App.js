@@ -9,6 +9,7 @@ import NotefulContext from "./NotefulContext";
 import AddFolder from './Components/AddFolder/AddFolder'
 import NoteDetails from './Components/NoteDetails/NoteDetails'
 import AddNote from './Components/AddNote/AddNote'
+import { withRouter } from 'react-router'
 
 class App extends React.Component {
   state = {
@@ -69,6 +70,7 @@ class App extends React.Component {
     const selectFolder = (selectedFolderId) => {
       this.setState({selectedFolder: selectedFolderId})
     }
+  console.log(this.props);
   
     return (
       <>
@@ -90,7 +92,7 @@ class App extends React.Component {
             <Route path="/add-folder" component={AddFolder}  />
             {/* <Route path="/add-folder" render={() => <AddFolder onFolderSelect={selectFolder} />} /> */}
             <Route path="/add-note" component={AddNote} />
-            <Route path="/note" render={() => <NoteDetails onFolderSelect={selectFolder()} />}/>
+            <Route path="/note" render={() => <NoteDetails onFolderSelect={selectFolder} isSelected={this.state.selectedFolder} />}/>
             <Route component={Error} />
           </Switch>
         </NotefulContext.Provider>
@@ -99,4 +101,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
+// withRouter makes available match, params, and history

@@ -3,6 +3,7 @@ import "./FolderSelect.css";
 import { Link } from "react-router-dom";
 import NotefulContext from "../../NotefulContext";
 import { AiFillDelete } from "react-icons/ai";
+import { withRouter } from 'react-router'
 
 class FolderSelect extends React.Component {
   state = {
@@ -42,9 +43,7 @@ class FolderSelect extends React.Component {
 
   render() {
     const { folders } = this.context.state;
-    console.log(folders);
-    
-    
+    console.log(this.props);
     
     return (
       //this maps over this.props.data and returns an <h4> with folder.id and folder.name within a larger <div>
@@ -52,7 +51,7 @@ class FolderSelect extends React.Component {
       <div className="folderSelect">
         <h2>Folders</h2>
         {folders.map((folder) => {
-          console.log(this.state.selectedFolder);
+          console.log(this.props.match.params.folderId);
           
           return (
             <Link
@@ -63,9 +62,9 @@ class FolderSelect extends React.Component {
             >
               <h4
                 value={this.state.isSelected1}
-                onClick={(e) => this.props.selectFolder(e)}
+                onClick={(e) => this.props.selectFolder}
                 className={
-                  this.state.selectedFolder === folder.id
+                  this.props.selectedFolder
                     ? "folderItemSelected"
                     : "folderItem"
                 }
@@ -90,4 +89,4 @@ class FolderSelect extends React.Component {
   }
 }
 
-export default FolderSelect;
+export default withRouter(FolderSelect);
