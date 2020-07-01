@@ -31,8 +31,8 @@ export default class NoteDetails extends React.Component {
   };
 
   render() {
-    const { notes } = this.context.state;
-    // const { folders } = this.context.state
+    const { notes } = this.context;
+    // const { folders } = this.context
     const params = this.props.location.search;
 
     let noteName = params.split("=")[1];
@@ -49,8 +49,8 @@ export default class NoteDetails extends React.Component {
     return (
       <div className="fullDisplay">
         <FolderSelect
-          onFolderSelect={this.props.selectFolder}
-          selectedFolder={this.props.selectedFolder}
+          // onFolderSelect={this.props.selectFolder}
+          // selectedFolder={this.props.selectedFolder}
         />
         <NoteDisplay />
         {foundNote && (

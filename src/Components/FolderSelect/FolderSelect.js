@@ -7,7 +7,8 @@ import { withRouter } from "react-router";
 
 class FolderSelect extends React.Component {
   state = {
-    selectedFolder: "",
+    selectedFolder: null,
+    className: "folderItem"
   };
 
   static contextType = NotefulContext;
@@ -38,10 +39,24 @@ class FolderSelect extends React.Component {
     this.setState({
       selectedFolder: folderId,
     });
+    console.log(this.context);
+    
+    this.context.setSelectedFolder(folderId)
+    this.context.selectedFolder = folderId
   };
 
+  componentWillUnmount() {
+    
+  }
+
   render() {
-    const { folders } = this.context.state;
+    const { folders } = this.context;
+    let className = (selectedFolder, folderId) => {
+      if ((this.context.selectedFolder && this.context.selectedFolder === folderId) || selectedFolder === folderId) {
+        return "folderItemSelected"
+      }
+      return "folderItem"
+    }
 
     return (
       <div className="folderSelect">
@@ -56,12 +71,9 @@ class FolderSelect extends React.Component {
               name="linkToFolderContents"
             >
               <h4
-                value={this.state.isSelected1}
-                onClick={(e) => this.props.selectFolder}
+                onClick={(e) => this.handleToggle(e, folder.id)}
                 className={
-                  this.props.selectedFolder
-                    ? "folderItemSelected"
-                    : "folderItem"
+                  className(this.state.selectedFolder, folder.id)
                 }
                 key={folder.id}
               >

@@ -16,7 +16,7 @@ class App extends React.Component {
     notes: [],
     folders: [],
     folderId: [],
-    selectedFolder: "",
+    selectedFolder: null,
   };
 
   componentDidMount() {
@@ -63,21 +63,21 @@ class App extends React.Component {
 
   // addFolder = (folderId) => {};
 
-  render() {
-    const selectFolder = (selectedFolderId) => {
-      this.setState({ selectedFolder: selectedFolderId });
-    };
-    console.log(this.state);
+  setSelectedFolder = (selectedFolderId) => {
+    return selectedFolderId
+  };
 
+  render() {
     return (
       <BrowserRouter>
         <NotefulContext.Provider
           value={{
-            state: this.state,
+            ...this.state,
             addNote: this.addNote,
             deleteNote: this.deleteNote,
             addFolder: this.addFolder,
             deleteFolder: this.deleteFolder,
+            setSelectedFolder: this.setSelectedFolder
           }}
         >
           <Header title={"Noteful"} />
@@ -94,8 +94,8 @@ class App extends React.Component {
                   <NoteDetails
                     //route props object with location, history, and match
                     {...routeProps}
-                    onFolderSelect={selectFolder}
-                    isSelected={this.state.selectedFolder}
+                    // onFolderSelect={this.selectFolder}
+                    // isSelected={this.state.selectedFolder}
                   />
                 )}
               />

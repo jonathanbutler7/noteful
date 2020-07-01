@@ -29,9 +29,9 @@ class NoteDisplay extends React.Component {
   };
 
   render() {
-    const { notes: notesList } = this.context.state;
+    const { notes: notesList } = this.context;
     const { folderId } = this.props;
-    const { folders } = this.context.state;
+    const { folders } = this.context;
     //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
     //props is an object with 14 items from dummydata
 
@@ -39,13 +39,16 @@ class NoteDisplay extends React.Component {
     let newNotesList = notesList;
 
     //if there is a folderId (in the array from props), then filter through notes and return only the new notes with that folder Id, then store notes with that Id in newNotes
-
-    if (folderId) {
+    let folderNameMatch;
+    if (folderId || this.context.selectedFolder) {
+      let foundFolderId = folderId || this.context.selectedFolder
       newNotesList = newNotesList.filter(function (note) {
-        return note.folderId === folderId;
+        return note.folderId === foundFolderId;
       });
+      folderNameMatch = folders.find((item) => item.id === foundFolderId);
     }
-    let folderNameMatch = folders.find((item) => item.id === folderId);
+    
+    
 
     return (
       <div className="noteBox">
@@ -53,8 +56,7 @@ class NoteDisplay extends React.Component {
         <h4>
           {!folderNameMatch ? "" : `Notes in ${folderNameMatch.name} folder`}
         </h4>
-        {newNotesList != null &&
-          newNotesList.map(({ id, name, modified }) => {
+        {newNotesList.map(({ id, name, modified }) => {
             let newMod = new Date(modified);
             let month = newMod.getMonth();
             let day = newMod.getDay();

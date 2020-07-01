@@ -87,7 +87,7 @@ export default class AddNote extends Component {
   };
 
   render() {
-    const { folders } = this.context.state;
+    const { folders } = this.context;
 
     return (
       <div className="viewport">
