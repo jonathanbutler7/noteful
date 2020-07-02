@@ -67,6 +67,10 @@ class App extends React.Component {
     return selectedFolderId
   };
 
+  setSelectedNote = (selectedNoteId) => {
+    return selectedNoteId
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -77,7 +81,8 @@ class App extends React.Component {
             deleteNote: this.deleteNote,
             addFolder: this.addFolder,
             deleteFolder: this.deleteFolder,
-            setSelectedFolder: this.setSelectedFolder
+            setSelectedFolder: this.setSelectedFolder,
+            setSelectedNote: this.setSelectedNote
           }}
         >
           <Header title={"Noteful"} />

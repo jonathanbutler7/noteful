@@ -39,7 +39,6 @@ class FolderSelect extends React.Component {
     this.setState({
       selectedFolder: folderId,
     });
-    console.log(this.context);
     
     this.context.setSelectedFolder(folderId)
     this.context.selectedFolder = folderId

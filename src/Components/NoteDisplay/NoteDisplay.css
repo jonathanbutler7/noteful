@@ -2,23 +2,30 @@
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    min-width: 399px;
     margin: 15px;
 }
 
 .note {
     border: solid 2px #424242;
     background-color: #F5F5F5;
-    margin-bottom: 10px;
-    padding: 0 10px 0 10px;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 10px;
     /* max-width: 450px; */
     /* margin-left: 15px; */
     margin-right: 0;
 }
 
+.noteItemSelected {
+    border: 2px solid #424242;
+    background-color: #424242;
+    color: white;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 10px;
+}
+
 .noteTitle {
-    display: flex;
-    justify-content: flex-start;
-    margin: 15px;
+    margin-top: 10px;
 }
 
 a {
@@ -31,17 +38,18 @@ a {
     background-color: white;
 }
 
+
+
 a:visited {
-    color: black;
+    color: none;
 }
 
-.noteDetails {
+/* .noteDetails {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 15px;
-    
-}
+} */
 
 .addButton {
     background-color: white;
@@ -67,7 +75,8 @@ a:visited {
 }
 
 #folderDelete:hover {
-    background-color: #424242;
+    background-color: red;
     color: white;
     cursor: pointer;
+    border: 2px solid red;
 }
