@@ -9,7 +9,6 @@ class NoteDisplay extends React.Component {
     className: "note"
   };
 
-
   static contextType = NotefulContext;
 
   deleteFromApi = (id) => {
@@ -92,7 +91,6 @@ class NoteDisplay extends React.Component {
                   <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
                   <button
                     id="folderDelete"
-                    // onClick={() => this.context.deleteNote(id)}
                     onClick={() => this.deleteFromApi(id)}
                   >
                     <h5>Delete</h5>

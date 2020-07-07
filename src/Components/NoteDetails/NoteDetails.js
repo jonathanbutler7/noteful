@@ -48,10 +48,7 @@ export default class NoteDetails extends React.Component {
 
     return (
       <div className="fullDisplay">
-        <FolderSelect
-          // onFolderSelect={this.props.selectFolder}
-          // selectedFolder={this.props.selectedFolder}
-        />
+        <FolderSelect />
         <NoteDisplay />
         {foundNote && (
           <div className="note__box">

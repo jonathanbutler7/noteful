@@ -102,7 +102,6 @@ export default class AddNote extends Component {
             placeholder="Name..."
             onChange={(e) => this.updateNote(e.target.value)}
           />
-          {/* {!this.state.value && this.state.errorMsg && <ValidationError message={this.state.errorMsg}/>} */}
           <label htmlFor="select-folder">
             <h4>Select folder:</h4>
           </label>

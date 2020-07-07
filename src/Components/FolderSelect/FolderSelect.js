@@ -44,10 +44,6 @@ class FolderSelect extends React.Component {
     this.context.selectedFolder = folderId
   };
 
-  componentWillUnmount() {
-    
-  }
-
   render() {
     const { folders } = this.context;
     let className = (selectedFolder, folderId) => {

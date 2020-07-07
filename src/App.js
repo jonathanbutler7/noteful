@@ -99,8 +99,6 @@ class App extends React.Component {
                   <NoteDetails
                     //route props object with location, history, and match
                     {...routeProps}
-                    // onFolderSelect={this.selectFolder}
-                    // isSelected={this.state.selectedFolder}
                   />
                 )}
               />
