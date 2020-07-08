@@ -23,21 +23,24 @@ export default class AddNote extends Component {
   updateNote(note) {
     this.setState({
       noteName: note,
-      noteValue: !this.state.value,
+      noteValue: true,
     });
+    !note.length && this.setState({noteValue: false})
   }
 
   updateNoteContent(note) {
     this.setState({
       noteContent: note,
-      contentValue: !this.state.value,
+      contentValue: true,
     });
+    !note.length && this.setState({contentValue: false})
   }
 
   updateFolderId(folderId) {
     this.setState({ folderId: folderId, 
-        folderValue: !this.state.value 
+        folderValue: true
     });
+    !folderId.length && this.setState({folderValue: false})
   }
 
   timeStamp() {
@@ -82,7 +85,7 @@ export default class AddNote extends Component {
       })
       .then((res) => (window.location.href = `/folder/${this.state.folderId}`))
       .catch((error) => {
-        console.error(error);
+        this.setState({errorMsg: 'Failed to add note to server', value: false})
       });
   };
 
@@ -143,3 +146,4 @@ export default class AddNote extends Component {
     );
   }
 }
+//not sure how to implement the feedback because there are no props being passed into AddNote component. can you give an example of what I should do to implement this feedback?

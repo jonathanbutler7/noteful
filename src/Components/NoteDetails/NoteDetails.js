@@ -23,7 +23,6 @@ export default class NoteDetails extends React.Component {
         }
         return res.json();
       })
-      // .then(res => res.json())
       .then((data) => this.context.deleteNote(id))
       .catch((error) => {
         console.error(error);
@@ -32,13 +31,15 @@ export default class NoteDetails extends React.Component {
 
   render() {
     const { notes } = this.context;
-    // const { folders } = this.context
     const params = this.props.location.search;
 
     let noteName = params.split("=")[1];
     let foundNote = notes.find((item) => item.name === noteName);
+    
     let readableDate = "";
+    let folderId = "";
     if (foundNote) {
+      folderId = foundNote.folderId
       let newMod = new Date(foundNote.modified);
       let month = newMod.getMonth();
       let day = newMod.getDay();
@@ -49,8 +50,9 @@ export default class NoteDetails extends React.Component {
     return (
       <div className="fullDisplay">
         <FolderSelect />
-        <NoteDisplay />
+        <NoteDisplay folderId={folderId}/>
         {foundNote && (
+          //make 55-65 another component in the future
           <div className="note__box">
             <h2>{foundNote.name}</h2>
             <p>{foundNote.content}</p>
@@ -69,5 +71,5 @@ export default class NoteDetails extends React.Component {
 }
 
 NoteDetails.propTypes = {
-  name: PropTypes.string
+  location: PropTypes.object
 }

@@ -11,14 +11,15 @@ export default class AddFolder extends React.Component {
       errorMsg: "",
     };
   }
-
+  
   updateFolder(folder) {
     this.setState({
       folderName: folder,
       value: true,
     });
+    !folder.length && this.setState({value: false})
   }
-
+  
   validateFolderEntry(e) {
     const textPresent = this.state.value;
     !textPresent
@@ -48,7 +49,7 @@ export default class AddFolder extends React.Component {
       })
       .then((res) => (window.location.href = "/"))
       .catch((error) => {
-        console.error(error);
+        this.setState({ errorMsg: "Failed to add folder to server", value: false });
       });
   };
 

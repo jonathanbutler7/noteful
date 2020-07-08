@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NoteDisplay.css";
 import NotefulContext from "../../NotefulContext";
+import PropTypes from 'prop-types'
 
 class NoteDisplay extends React.Component {
   state = {
@@ -41,6 +42,7 @@ class NoteDisplay extends React.Component {
   render() {
     const { notes: notesList } = this.context;
     const { folderId } = this.props;
+    console.log(folderId)
     const { folders } = this.context;
     //take notes and folderId from this.props: (this.props.notes, this.props.folderId)
     //props is an object with 14 items from dummydata
@@ -109,3 +111,7 @@ class NoteDisplay extends React.Component {
 }
 
 export default NoteDisplay;
+//class NoteDisplay is adding a key to itself called propTypes, which is adding another key to itself that has a value of PropTypes.string. possible to define it at the top. typically default props defined at top. it comes down to consistency.
+NoteDisplay.propTypes = {
+  folderId: PropTypes.string
+}
