@@ -20,7 +20,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:9090/folders", {
+    fetch("http://localhost:8000/api/folders", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ class App extends React.Component {
       .then((res) => res.json())
       .then((folders) => this.setState({ folders }));
 
-    fetch("http://localhost:9090/notes", {
+    fetch("http://localhost:8000/api/notes", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -64,12 +64,12 @@ class App extends React.Component {
   // addFolder = (folderId) => {};
 
   setSelectedFolder = (selectedFolderId) => {
-    return selectedFolderId
+    return selectedFolderId;
   };
 
   setSelectedNote = (selectedNoteId) => {
-    return selectedNoteId
-  }
+    return selectedNoteId;
+  };
 
   render() {
     return (
@@ -82,7 +82,7 @@ class App extends React.Component {
             addFolder: this.addFolder,
             deleteFolder: this.deleteFolder,
             setSelectedFolder: this.setSelectedFolder,
-            setSelectedNote: this.setSelectedNote
+            setSelectedNote: this.setSelectedNote,
           }}
         >
           <Header title={"Noteful"} />
@@ -90,7 +90,6 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={StartPage} />
               <Route path="/folder/:folderId" component={NoteRoute} />
-              {/* //render props pattern,, instead of component attribute, have a render attribute which calls the component. call that function inside add folder compoment, and give it props from react router and selected folder */}
               <Route path="/add-folder" component={AddFolder} />
               <Route path="/add-note" component={AddNote} />
               <Route

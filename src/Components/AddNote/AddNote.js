@@ -68,7 +68,7 @@ export default class AddNote extends Component {
       folderId: this.state.folderId,
       modified: this.timeStamp(),
     };
-    fetch("http://localhost:9090/notes", {
+    fetch("http://localhost:8000/api/notes", {
       method: "POST",
       body: JSON.stringify(note),
       headers: {
@@ -117,7 +117,7 @@ export default class AddNote extends Component {
             {folders.map((item) => {
               return (
                 <option id={item.id} key={item.id} value={item.id}>
-                  {item.name}
+                  {item.folder_name}
                 </option>
               );
             })}

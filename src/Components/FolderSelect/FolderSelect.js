@@ -8,13 +8,13 @@ import { withRouter } from "react-router";
 class FolderSelect extends React.Component {
   state = {
     selectedFolder: null,
-    className: "folderItem"
+    className: "folderItem",
   };
 
   static contextType = NotefulContext;
 
   deleteFromApi = (id) => {
-    fetch(`http://localhost:9090/folders/${id}`, {
+    fetch(`http://localhost:8000/api/folders/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -39,19 +39,24 @@ class FolderSelect extends React.Component {
     this.setState({
       selectedFolder: folderId,
     });
-    
-    this.context.setSelectedFolder(folderId)
-    this.context.selectedFolder = folderId
+
+    this.context.setSelectedFolder(folderId);
+    this.context.selectedFolder = folderId;
   };
 
   render() {
     const { folders } = this.context;
+    // console.log(this.context)
     let className = (selectedFolder, folderId) => {
-      if ((this.context.selectedFolder && this.context.selectedFolder === folderId) || selectedFolder === folderId) {
-        return "folderItemSelected"
+      if (
+        (this.context.selectedFolder &&
+          this.context.selectedFolder === folderId) ||
+        selectedFolder === folderId
+      ) {
+        return "folderItemSelected";
       }
-      return "folderItem"
-    }
+      return "folderItem";
+    };
 
     return (
       <div className="folderSelect">
@@ -67,12 +72,10 @@ class FolderSelect extends React.Component {
             >
               <h4
                 onClick={(e) => this.handleToggle(e, folder.id)}
-                className={
-                  className(this.state.selectedFolder, folder.id)
-                }
+                className={className(this.state.selectedFolder, folder.id)}
                 key={folder.id}
               >
-                {folder.name}
+                {folder.folder_name}
                 <div className="deleteCorner">
                   <AiFillDelete
                     className="deleteIcon"
