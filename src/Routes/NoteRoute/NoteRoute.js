@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import NoteDisplay from '../../Components/NoteDisplay/NoteDisplay'
+import NoteDisplay2 from '../../Components/NoteDisplay/NoteDisplay2'
 import './NoteRoute.css'
 import NotefulContext from "../../NotefulContext"
 import FolderSelect from '../../Components/FolderSelect/FolderSelect'
@@ -11,7 +11,7 @@ export default function NoteRoute(props) {
     return ( 
         <div className="mainDisplay">
             <FolderSelect />
-            <NoteDisplay
+            <NoteDisplay2
              folderId={props.match.params.folderId}
             />
             

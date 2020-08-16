@@ -63,10 +63,10 @@ export default class AddNote extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const note = {
-      name: this.state.noteName,
+      note_name: this.state.noteName,
       content: this.state.noteContent,
-      folderId: this.state.folderId,
-      modified: this.timeStamp(),
+      folder_id: parseInt(this.state.folderId),
+      // modified: this.timeStamp(),
     };
     fetch("http://localhost:8000/api/notes", {
       method: "POST",

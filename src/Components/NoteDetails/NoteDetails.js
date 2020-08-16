@@ -1,7 +1,7 @@
 import React from "react";
 import NotefulContext from "../../NotefulContext";
 import FolderSelect from "../FolderSelect/FolderSelect";
-import NoteDisplay from "../NoteDisplay/NoteDisplay";
+import NoteDisplay2 from "../NoteDisplay/NoteDisplay2";
 import "./NoteDetails.css";
 import PropTypes from 'prop-types';
 
@@ -33,9 +33,10 @@ export default class NoteDetails extends React.Component {
     const { notes } = this.context;
     const params = this.props.location.search;
 
-    let noteName = params.split("=")[1];
-    let foundNote = notes.find((item) => item.name === noteName);
-    
+    let noteId = params.split("=")[1];
+    console.log(notes, noteId)
+    let foundNote = notes.find((item) => item.id === noteId);
+    console.log(foundNote)
     let readableDate = "";
     let folderId = "";
     if (foundNote) {
@@ -50,11 +51,11 @@ export default class NoteDetails extends React.Component {
     return (
       <div className="fullDisplay">
         <FolderSelect />
-        <NoteDisplay folderId={folderId}/>
+        <NoteDisplay2 folderId={folderId}/>
         {foundNote && (
           //make 55-65 another component in the future
           <div className="note__box">
-            <h2>{foundNote.name}</h2>
+            <h2>{foundNote.note_name}</h2>
             <p>{foundNote.content}</p>
             <p>Last modified {readableDate}</p>
             <button

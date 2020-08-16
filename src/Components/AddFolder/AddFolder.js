@@ -30,7 +30,7 @@ export default class AddFolder extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const folderName = {
-      name: this.state.folderName,
+      folder_name: this.state.folderName,
     };
     fetch("http://localhost:8000/api/folders", {
       method: "POST",
