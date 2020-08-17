@@ -37,7 +37,7 @@ export default class AddNote extends Component {
   }
 
   updateFolderId(folderId) {
-    this.setState({ folderId: folderId, 
+    this.setState({ folderId: parseInt(folderId), 
         folderValue: true
     });
     !folderId.length && this.setState({folderValue: false})
@@ -65,7 +65,7 @@ export default class AddNote extends Component {
     const note = {
       note_name: this.state.noteName,
       content: this.state.noteContent,
-      folder_id: parseInt(this.state.folderId),
+      folder_id: this.state.folderId,
       // modified: this.timeStamp(),
     };
     fetch("http://localhost:8000/api/notes", {

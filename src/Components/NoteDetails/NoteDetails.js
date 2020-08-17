@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import NotefulContext from "../../NotefulContext";
 import FolderSelect from "../FolderSelect/FolderSelect";
 import NoteDisplay2 from "../NoteDisplay/NoteDisplay2";
@@ -33,19 +34,20 @@ export default class NoteDetails extends React.Component {
     const { notes } = this.context;
     const params = this.props.location.search;
 
-    let noteId = params.split("=")[1];
+    let noteId = parseInt(params.split("=")[1]);
     console.log(notes, noteId)
     let foundNote = notes.find((item) => item.id === noteId);
+    // let foundNote = notes.find((item) => console.log(item.id));
     console.log(foundNote)
     let readableDate = "";
     let folderId = "";
     if (foundNote) {
       folderId = foundNote.folderId
-      let newMod = new Date(foundNote.modified);
+      let newMod = new Date(foundNote.date_created);
       let month = newMod.getMonth();
       let day = newMod.getDay();
       let year = newMod.getFullYear();
-      readableDate = `${month + 1}/${day + 1}/${year + 1}`;
+      readableDate = `${month + 1}/${day}/${year}`;
     }
 
     return (
@@ -56,14 +58,17 @@ export default class NoteDetails extends React.Component {
           //make 55-65 another component in the future
           <div className="note__box">
             <h2>{foundNote.note_name}</h2>
-            <p>{foundNote.content}</p>
+            <p>Content: {foundNote.content}</p>
             <p>Last modified {readableDate}</p>
+            <Link to={`edit-note/${foundNote.id}`}>
             <button
               id="folderDelete"
               onClick={() => this.deleteFromApi(foundNote.id)}
             >
-              <h5>Delete</h5>
+              <h5>Edit</h5>
             </button>
+            </Link>
+            
           </div>
         )}
       </div>

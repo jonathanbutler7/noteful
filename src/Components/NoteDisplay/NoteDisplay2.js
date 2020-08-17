@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./NoteDisplay.css";
 import NotefulContext from "../../NotefulContext";
 import PropTypes from "prop-types";
+import { AiOutlineInsertRowAbove } from "react-icons/ai";
 
 function NoteDisplay2() {
   const [noteClass, setNoteClass] = useState("note");
@@ -12,26 +13,18 @@ function NoteDisplay2() {
   }
 
   const deleteFromApi = (id) => {
-    console.log(id)
-    fetch(`http://localhost:8000/api/notes/${id}`, {
+    console.log(id);
+    const raw = "";
+    const url = `http://localhost:8000/api/notes/${id}`;
+    var options = {
       method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
-      })
-      // .then(res => res.json())
-      .then((data) => this.context.deleteNote(id))
-      .catch((error) => {
-        console.error(error);
-      });
+      body: raw,
+      redirect: "follow",
+    };
+    fetch(url, options)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
   const context = useContext(NotefulContext);
   const selectedFolder = context.selectedFolder;
@@ -45,34 +38,36 @@ function NoteDisplay2() {
         let month = newMod.getMonth();
         let day = newMod.getDay();
         let year = newMod.getFullYear();
-        return (    
-            // <Link
-            //   to={`/note?name=${note.note_name}`}
-            //   key={id}
-            //   name={id}
-            //   onClick={(e) => toggleNoteClass(e, id)}
-            //   className="newnotebox"
-            // >
-              <div className="newnotebox">
-                  <Link to={`/note?name=${note.id}`}>
-                <h2 className="noteTitle">{note.note_name}</h2>
-                <div className="noteDetails">
-                  <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
-                  <button
-                    id="folderDelete"
-                    onClick={() => deleteFromApi(note.id)}
-                  >
-                    <h5>Delete</h5>
-                  </button>
-                </div>
-                </Link>
-                
-            </div>
+        return (
+          // <Link
+          //   to={`/note?name=${note.note_name}`}
+          //   key={id}
+          //   name={id}
+          //   onClick={(e) => toggleNoteClass(e, id)}
+          //   className="newnotebox"
+          // >
+          <div className="newnotebox">
+            <Link to={`/note?name=${note.id}`}>
+              <h2 className="noteTitle">{note.note_name}</h2>
+              <div className="noteDetails">
+                <p>Last modified {`${month + 1}/${day + 1}/${year}`}</p>
+                <button
+                  id="folderDelete"
+                  onClick={() => deleteFromApi(note.id)}
+                >
+                  <h5>Delete</h5>
+                </button>
+              </div>
+            </Link>
+          </div>
         );
       })}
-      <Link to={"/add-note"} className="addFolderButton" name="linkToAddNote">
-          <h5>Add note</h5>
-        </Link>
+      <div className="addFolderButton">
+      <Link to={"/add-note"}  name="linkToAddNote">
+        <h5>Add note</h5>
+      </Link>
+      </div>
+      
     </div>
   );
 }

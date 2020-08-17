@@ -14,25 +14,18 @@ class FolderSelect extends React.Component {
   static contextType = NotefulContext;
 
   deleteFromApi = (id) => {
-    fetch(`http://localhost:8000/api/folders/${id}`, {
+    console.log(id);
+    const raw = "";
+    const url = `http://localhost:8000/api/folders/${id}`;
+    var options = {
       method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
-      })
-      // .then(res => res.json())
-      .then((data) => this.context.deleteFolder(id))
-      .catch((error) => {
-        console.error(error);
-      });
+      body: raw,
+      redirect: "follow",
+    };
+    fetch(url, options)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   handleToggle = (e, folderId) => {

@@ -10,6 +10,7 @@ import AddFolder from "./Components/AddFolder/AddFolder";
 import NoteDetails from "./Components/NoteDetails/NoteDetails";
 import AddNote from "./Components/AddNote/AddNote";
 import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
+import EditNote from "./Components/EditNote/EditNote"
 
 class App extends React.Component {
   state = {
@@ -92,6 +93,7 @@ class App extends React.Component {
               <Route path="/folder/:folderId" component={NoteRoute} />
               <Route path="/add-folder" component={AddFolder} />
               <Route path="/add-note" component={AddNote} />
+              <Route exact path="/edit-note/:note_id" component={EditNote} />
               <Route
                 path="/note"
                 render={(routeProps) => (
