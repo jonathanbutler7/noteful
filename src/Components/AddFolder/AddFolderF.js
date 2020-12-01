@@ -30,13 +30,14 @@ function AddFolderF() {
       const response = axios.post(url, body);
       const result = response.data;
       console.log(result);
+      window.location.href = '/';
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');
       setValue(false);
     }
   }
-  
+
   return (
     <div className='viewport'>
       <h2>Add Folder:</h2>

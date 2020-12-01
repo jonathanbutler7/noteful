@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 
 function Header({ title }) {
+  
   function goBackToHome() {
     window.location.href = '/';
   }

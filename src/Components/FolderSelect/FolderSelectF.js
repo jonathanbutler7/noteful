@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import './FolderSelect.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
@@ -7,14 +7,12 @@ import { withRouter } from 'react-router';
 import axios from 'axios';
 
 function FolderSelectF() {
-  //   const [selectedFolder, setSelectedFolder] = useState(null);
-  //   const [className, setClassName] = useState('folderItem');
   const { folders, serverUrl, selectedFolder, setSelectedFolder } = useContext(
     NotefulContext
   );
 
   async function deleteFromApi(id) {
-    const url = `${serverUrl}/folders/${id}`;
+    const url = `${serverUrl}/api/folders/${id}`;
     try {
       const response = axios.delete(url);
       const result = response.data;
