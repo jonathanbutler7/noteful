@@ -41,21 +41,30 @@ function App() {
         value={{
           folders,
           notes,
-          setSelectedFolder: setSelectedFolder,
-          setSelectedNote: setSelectedNote,
+          setSelectedFolder,
+          setSelectedNote,
           selectedFolder,
           selectedNote,
-          serverUrl: serverUrl,
+          serverUrl,
         }}
       >
         <Header title={'Noteful'} />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
-            {routes.map((route) =>
+            {routes.map((route, idx) =>
               route.exact ? (
-                <Route exact path={route.path} component={route.component} />
+                <Route
+                  exact
+                  path={route.path}
+                  component={route.component}
+                  key={idx}
+                />
               ) : (
-                <Route path={route.path} component={route.component} />
+                <Route
+                  path={route.path}
+                  component={route.component}
+                  key={idx}
+                />
               )
             )}
           </Switch>

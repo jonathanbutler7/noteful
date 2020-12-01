@@ -4,37 +4,35 @@ import styles from './AddNote.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
-function AddNoteF() {
+function AddNote() {
   const { folders, serverUrl } = useContext(NotefulContext);
-  const [noteName, setNoteName] = useState('');
-  const [noteContent, setNoteContent] = useState('');
-  const [folderId, setFolderId] = useState('');
-  const [folderValue, setFolderValue] = useState(false);
-  const [contentValue, setContentValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [note, setNote] = useState({
+    name: '',
+    content: '',
+    folderId: null,
+  });
 
-  function updateNoteContent(note) {
-    setNoteContent(note);
-    setContentValue(true);
-    !note.length && contentValue(false);
-  }
-
-  function updateFolderId(id) {
-    console.log(id);
-    setFolderId(parseInt(id));
-    setFolderValue(true);
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setNote((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const note = {
-      note_name: noteName,
-      content: noteContent,
-      folder_id: folderId,
+    const { name, content, folderId } = note;
+    const newNote = {
+      note_name: name,
+      content: content,
+      folder_id: parseInt(folderId),
     };
+
     const url = `${serverUrl}/api/notes`;
     try {
-      const response = axios.post(url, note);
+      const response = axios.post(url, newNote);
       const result = response.data;
       console.log(result);
       window.location.href = `/folder/${folderId}`;
@@ -44,8 +42,8 @@ function AddNoteF() {
   }
 
   function validateFolderEntry(e) {
-    console.log(noteName, contentValue, folderValue);
-    !noteName || !contentValue || !folderValue
+    const { name, content, folderId } = note;
+    !name || !content || !folderId
       ? setErrorMsg('all fields are required')
       : handleSubmit(e);
   }
@@ -59,18 +57,14 @@ function AddNoteF() {
         </label>
         <input
           type='text'
-          name='noteName'
+          name='name'
           placeholder='Name...'
-          onChange={(e) => setNoteName(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
         <label htmlFor='select-folder'>
           <h4>Select folder:</h4>
         </label>
-        <select
-          name='select-folder'
-          // id={styles.selectFolder}
-          onChange={(e) => updateFolderId(e.target.value)}
-        >
+        <select name='folderId' onChange={(e) => handleChange(e)}>
           <option value='--Select folder--'>--Select folder--</option>
           {folders.map((item) => {
             return (
@@ -86,12 +80,15 @@ function AddNoteF() {
         <textarea
           type='textarea'
           id={styles.textarea}
-          name='noteContent'
+          name='content'
           placeholder='Content...'
-          onChange={(e) => updateNoteContent(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
         {errorMsg && <ValidationError message={errorMsg} />}
-        <button className={styles.addButton} onClick={(e) => validateFolderEntry(e)}>
+        <button
+          className={styles.addButton}
+          onClick={(e) => validateFolderEntry(e)}
+        >
           <h5>Add</h5>
         </button>
       </div>
@@ -99,4 +96,4 @@ function AddNoteF() {
   );
 }
 
-export default AddNoteF;
+export default AddNote;
