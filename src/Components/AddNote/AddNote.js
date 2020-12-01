@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import NotefulContext from "../../NotefulContext";
-import "./AddNote.css";
-import ValidationError from "../ValidationError/ValidationError";
+import React, { Component } from 'react';
+import NotefulContext from '../../NotefulContext';
+import './AddNote.css';
+import ValidationError from '../ValidationError/ValidationError';
 
 export default class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      noteName: "",
-      noteContent: "",
-      folderId: "",
-      modified: "",
+      noteName: '',
+      noteContent: '',
+      folderId: '',
+      modified: '',
       noteValue: false,
       contentValue: false,
       folderValue: false,
-      errorMsg: "",
+      errorMsg: '',
     };
   }
 
@@ -25,7 +25,7 @@ export default class AddNote extends Component {
       noteName: note,
       noteValue: true,
     });
-    !note.length && this.setState({noteValue: false})
+    !note.length && this.setState({ noteValue: false });
   }
 
   updateNoteContent(note) {
@@ -33,14 +33,12 @@ export default class AddNote extends Component {
       noteContent: note,
       contentValue: true,
     });
-    !note.length && this.setState({contentValue: false})
+    !note.length && this.setState({ contentValue: false });
   }
 
   updateFolderId(folderId) {
-    this.setState({ folderId: parseInt(folderId), 
-        folderValue: true
-    });
-    !folderId.length && this.setState({folderValue: false})
+    this.setState({ folderId: parseInt(folderId), folderValue: true });
+    !folderId.length && this.setState({ folderValue: false });
   }
 
   timeStamp() {
@@ -54,9 +52,9 @@ export default class AddNote extends Component {
     const notePresent = this.state.noteValue;
     const contentPresent = this.state.contentValue;
     const folderPresent = this.state.folderValue;
-    
+
     !notePresent || !contentPresent || !folderPresent
-      ? this.setState({ errorMsg: "all fields are required" })
+      ? this.setState({ errorMsg: 'all fields are required' })
       : this.handleSubmit(e);
   }
 
@@ -68,11 +66,11 @@ export default class AddNote extends Component {
       folder_id: this.state.folderId,
       // modified: this.timeStamp(),
     };
-    fetch("http://localhost:8000/api/notes", {
-      method: "POST",
+    fetch('http://localhost:8000/api/notes', {
+      method: 'POST',
       body: JSON.stringify(note),
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     })
       .then((res) => {
@@ -85,7 +83,10 @@ export default class AddNote extends Component {
       })
       .then((res) => (window.location.href = `/folder/${this.state.folderId}`))
       .catch((error) => {
-        this.setState({errorMsg: 'Failed to add note to server', value: false})
+        this.setState({
+          errorMsg: 'Failed to add note to server',
+          value: false,
+        });
       });
   };
 
@@ -93,27 +94,27 @@ export default class AddNote extends Component {
     const { folders } = this.context;
 
     return (
-      <div className="viewport">
+      <div className='viewport'>
         <h2>Add Note:</h2>
-        <div className="addNoteForm">
-          <label className="input" htmlFor="noteName">
+        <div className='addNoteForm'>
+          <label className='input' htmlFor='noteName'>
             <h4>Name:</h4>
           </label>
           <input
-            type="text"
-            name="noteName"
-            placeholder="Name..."
+            type='text'
+            name='noteName'
+            placeholder='Name...'
             onChange={(e) => this.updateNote(e.target.value)}
           />
-          <label htmlFor="select-folder">
+          <label htmlFor='select-folder'>
             <h4>Select folder:</h4>
           </label>
           <select
-            name="select-folder"
-            id="select-folder"
+            name='select-folder'
+            id='select-folder'
             onChange={(e) => this.updateFolderId(e.target.value)}
           >
-            <option value="--Select folder--">--Select folder--</option>
+            <option value='--Select folder--'>--Select folder--</option>
             {folders.map((item) => {
               return (
                 <option id={item.id} key={item.id} value={item.id}>
@@ -122,21 +123,21 @@ export default class AddNote extends Component {
               );
             })}
           </select>
-          <label className="input" htmlFor="noteContent">
+          <label className='input' htmlFor='noteContent'>
             <h4>Content:</h4>
           </label>
           <textarea
-            type="textarea"
-            id="textarea"
-            name="noteContent"
-            placeholder="Content..."
+            type='textarea'
+            id='textarea'
+            name='noteContent'
+            placeholder='Content...'
             onChange={(e) => this.updateNoteContent(e.target.value)}
           />
           {!this.state.value && this.state.errorMsg && (
             <ValidationError message={this.state.errorMsg} />
           )}
           <button
-            className="addButton"
+            className='addButton'
             onClick={(e) => this.validateFolderEntry(e)}
           >
             <h5>Add</h5>
@@ -146,4 +147,3 @@ export default class AddNote extends Component {
     );
   }
 }
-//not sure how to implement the feedback because there are no props being passed into AddNote component. can you give an example of what I should do to implement this feedback?

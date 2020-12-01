@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import ValidationError from "../ValidationError/ValidationError";
 import NotefulContext from "../../NotefulContext";
 import { Link } from "react-router-dom";
 
