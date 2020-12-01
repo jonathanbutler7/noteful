@@ -1,0 +1,44 @@
+.note__box {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 300px;
+        border: solid 2px #424242;
+        background-color: #F5F5F5;
+        padding: 25px;
+        margin: 15px;
+
+        a {
+                text-decoration: none;
+                color: black;
+
+                &:visited {
+                        color: none;
+                }
+        }
+}
+
+.fullDisplay {
+        display: flex;
+        flex-direction: row;
+}
+
+#folderDelete {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border: 2px solid #424242;
+        color: #424242;
+        font-family: "arial";
+        width: 175px;
+        height: 56px;
+        justify-content: center;
+
+        &:hover {
+                background-color: red;
+                color: white;
+                cursor: pointer;
+                border: 2px solid red;
+
+        }
+}

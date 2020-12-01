@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import styles from './Header.module.scss';
 
 function Header({ title }) {
   
@@ -8,7 +8,7 @@ function Header({ title }) {
   }
 
   return (
-    <div className='header' onClick={goBackToHome}>
+    <div className={styles.header} onClick={goBackToHome}>
       <header>
         <h1 id='headerButton'>{title}</h1>
       </header>

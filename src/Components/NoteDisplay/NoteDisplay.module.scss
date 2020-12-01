@@ -1,4 +1,4 @@
-.noteBox{
+.noteBox {
     display: flex;
     flex-direction: column;
     max-width: 400px;
@@ -11,14 +11,13 @@
     background-color: #F5F5F5;
     margin-bottom: 20px;
     padding: 0 10px 10px 10px;
-    /* max-width: 450px; */
-    /* margin-left: 15px; */
     margin-right: 0;
 }
 
 .not {
     padding: 10px;
 }
+
 .newnotebox {
     border: 1px solid pink;
     border: solid 2px #424242;
@@ -28,7 +27,18 @@
     max-width: 400px;
     min-width: 399px;
     margin: 15px;
+
+    a {
+        text-decoration: none;
+        color: black;
+        background: green;
+
+        &:visited {
+            color: none;
+        }
+    }
 }
+
 .noteItemSelected {
     border: 2px solid #424242;
     background-color: #424242;
@@ -41,28 +51,11 @@
     margin-top: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
 
 .note:hover {
     color: black;
     background-color: white;
 }
-
-
-
-a:visited {
-    color: none;
-}
-
-/* .noteDetails {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 15px;
-} */
 
 .addButton {
     background-color: white;
@@ -73,6 +66,16 @@ a:visited {
     height: 56px;
     cursor: pointer;
     justify-content: flex-start;
+
+    a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+
+        &:visited {
+            color: none;
+        }
+    }
 }
 
 #folderDelete {
@@ -85,11 +88,12 @@ a:visited {
     width: 175px;
     height: 56px;
     justify-content: center;
-}
 
-#folderDelete:hover {
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    border: 2px solid red;
+    &:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        border: 2px solid red;
+
+    }
 }

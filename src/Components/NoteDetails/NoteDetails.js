@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
 import FolderSelect from '../FolderSelect/FolderSelect';
 import NoteDisplay2 from '../NoteDisplay/NoteDisplay';
-import './NoteDetails.css';
+import styles from './NoteDetails.module.scss';
 import axios from 'axios';
 
 function NoteDetailsF(props) {
@@ -36,18 +36,17 @@ function NoteDetailsF(props) {
     }
   }
   return (
-    <div className='fullDisplay'>
+    <div className={styles.fullDisplay}>
       <FolderSelect />
       <NoteDisplay2 folderId={folderId} />
       {foundNote && (
-        //make 55-65 another component in the future
-        <div className='note__box'>
+        <div className={styles.note__box}>
           <h2>{foundNote.note_name}</h2>
           <p>Content: {foundNote.content}</p>
           <p>Last modified {readableDate}</p>
           <Link to={`edit-note/${foundNote.id}`}>
             <button
-              id='folderDelete'
+              id={styles.folderDelete}
               onClick={() => deleteFromApi(foundNote.id)}
             >
               <h5>Edit</h5>

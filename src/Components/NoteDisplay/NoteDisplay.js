@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './NoteDisplay.css';
+import styles from './NoteDisplay.module.scss';
 import NotefulContext from '../../NotefulContext';
 import axios from 'axios';
 
@@ -20,20 +20,20 @@ function NoteDisplayF() {
   }
 
   return (
-    <div className='notebox'>
+    <div className={styles.notebox}>
       {newNotesList.map((note, id) => {
         let newMod = new Date(note.date_created);
         let month = newMod.getMonth();
         let day = newMod.getDay();
         let year = newMod.getFullYear();
         return (
-          <div className='newnotebox' key={id}>
+          <div className={styles.newnotebox} key={id}>
             <Link to={`/note?name=${note.id}`}>
-              <h2 className='noteTitle'>{note.note_name}</h2>
-              <div className='noteDetails'>
+              <h2 className={styles.noteTitle}>{note.note_name}</h2>
+              <div className={styles.noteDetails}>
                 <p>Last modified {`${month + 1}/${day}/${year}`}</p>
                 <button
-                  id='folderDelete'
+                  id={styles.folderDelete}
                   onClick={() => deleteFromApi(note.id)}
                 >
                   <h5>Delete</h5>
@@ -43,7 +43,7 @@ function NoteDisplayF() {
           </div>
         );
       })}
-      <div className='addFolderButton'>
+      <div className={styles.addButton}>
         <Link to={'/add-note'} name='linkToAddNote'>
           <h5>Add note</h5>
         </Link>
