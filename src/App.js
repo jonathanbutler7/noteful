@@ -17,7 +17,6 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 function AppF() {
   const [notes, setNotes] = useState([]);
   const [folders, setFolders] = useState([]);
-  const [folderId, setFolderId] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
 
