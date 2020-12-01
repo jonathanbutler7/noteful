@@ -7,7 +7,7 @@ import Error from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';
 import AddFolderF from './Components/AddFolder/AddFolderF';
-import NoteDetails from './Components/NoteDetails/NoteDetails';
+import NoteDetails from './Components/NoteDetails/NoteDetailsF';
 import AddNote from './Components/AddNote/AddNoteF';
 import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import EditNote from './Components/EditNote/EditNote';
@@ -48,10 +48,6 @@ function AppF() {
         value={{
           folders,
           notes,
-          //   addNote: this.addNote,
-          //   deleteNote: this.deleteNote,
-          //   addFolder: this.addFolder,
-          //   deleteFolder: this.deleteFolder,
           setSelectedFolder: setSelectedFolder,
           setSelectedNote: setSelectedNote,
           selectedFolder,

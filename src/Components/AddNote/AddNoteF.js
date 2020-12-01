@@ -6,21 +6,12 @@ import axios from 'axios';
 
 function AddNoteF() {
   const { folders, serverUrl } = useContext(NotefulContext);
-//   const [note, setNote] = useState('');
   const [noteName, setNoteName] = useState('');
   const [noteContent, setNoteContent] = useState('');
   const [folderId, setFolderId] = useState('');
-  const [modified, setModified] = useState('');
-  const [noteValue, setNoteValue] = useState(false);
   const [folderValue, setFolderValue] = useState(false);
   const [contentValue, setContentValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-
-//   function updateNote(val) {
-//     setNote(val);
-//     setNoteValue(true);
-//     !val.length && setNoteValue(false);
-//   }
 
   function updateNoteContent(note) {
     setNoteContent(note);
@@ -32,7 +23,6 @@ function AddNoteF() {
     console.log(id);
     setFolderId(parseInt(id));
     setFolderValue(true);
-    //   !folderId.length && setFolderValue(false);
   }
 
   function handleSubmit(e) {
@@ -43,11 +33,9 @@ function AddNoteF() {
       folder_id: folderId,
     };
     const url = `${serverUrl}/api/notes`;
-    console.log(url, note);
     try {
       const response = axios.post(url, note);
       const result = response.data;
-      console.log(result);
       window.location.href = `/folder/${folderId}`;
     } catch (error) {
       setErrorMsg(error);
