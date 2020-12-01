@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import NotefulContext from "../../NotefulContext";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import NotefulContext from '../../NotefulContext';
+import { Link } from 'react-router-dom';
 
 function EditNote() {
   const context = useContext(NotefulContext);
@@ -10,7 +10,7 @@ function EditNote() {
 
   const folders = context.folders;
   const notes = context.notes;
-  let noteId = parseInt(window.location.href.split("/edit-note/")[1]);
+  let noteId = parseInt(window.location.href.split('/edit-note/')[1]);
   let foundNote = notes.find((item) => item.id === noteId);
   let note_name;
   let note_content;
@@ -23,7 +23,7 @@ function EditNote() {
     e.preventDefault();
 
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append('Content-Type', 'application/json');
 
     var raw = JSON.stringify({
       content: content,
@@ -32,40 +32,40 @@ function EditNote() {
     });
 
     var requestOptions = {
-      method: "PATCH",
+      method: 'PATCH',
       headers: myHeaders,
       body: raw,
-      redirect: "follow",
+      redirect: 'follow',
     };
 
     fetch(`http://localhost:8000/api/notes/${noteId}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log('error', error));
   }
 
   return (
-    <div className="viewport">
+    <div className='viewport'>
       <h2>Edit Note:</h2>
-      <div className="addNoteForm">
-        <label className="input" htmlFor="noteName">
+      <div className='addNoteForm'>
+        <label className='input' htmlFor='noteName'>
           <h4>Name:</h4>
         </label>
         <input
-          type="text"
-          name="noteName"
+          type='text'
+          name='noteName'
           placeholder={note_name}
           onChange={(e) => setNoteName(e.target.value)}
         />
-        <label htmlFor="select-folder">
+        <label htmlFor='select-folder'>
           <h4>Select folder:</h4>
         </label>
         <select
-          name="select-folder"
-          id="select-folder"
+          name='select-folder'
+          id='select-folder'
           onChange={(e) => setFolderId(e.target.value)}
         >
-          <option value="--Select folder--">--Select folder--</option>
+          <option value='--Select folder--'>--Select folder--</option>
           {folders.map((item) => {
             return (
               <option id={item.id} key={item.id} value={item.id}>
@@ -74,18 +74,18 @@ function EditNote() {
             );
           })}
         </select>
-        <label className="input" htmlFor="noteContent">
+        <label className='input' htmlFor='noteContent'>
           <h4>Content:</h4>
         </label>
         <textarea
-          type="textarea"
-          id="textarea"
-          name="noteContent"
+          type='textarea'
+          id='textarea'
+          name='noteContent'
           placeholder={note_content}
           onChange={(e) => setContent(e.target.value)}
         />
         <Link to={`/note?name=${noteId}`}>
-          <button className="addButton" onClick={(e) => sendPatch(e)}>
+          <button className='addButton' onClick={(e) => sendPatch(e)}>
             <h5>Submit</h5>
           </button>
         </Link>
