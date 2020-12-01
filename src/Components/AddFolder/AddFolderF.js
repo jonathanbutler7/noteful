@@ -3,9 +3,9 @@ import NotefulContext from '../../NotefulContext';
 import './AddFolder.css';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
-const { serverUrl } = useContext(NotefulContext);
 
 function AddFolderF() {
+  const { serverUrl } = useContext(NotefulContext);
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -29,13 +29,14 @@ function AddFolderF() {
     try {
       const response = axios.post(url, body);
       const result = response.data;
-      console.log(response);
+      console.log(result);
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');
       setValue(false);
     }
   }
+  
   return (
     <div className='viewport'>
       <h2>Add Folder:</h2>
