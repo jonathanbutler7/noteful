@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './App.css';
 import { ErrorBoundary } from 'react-error-boundary';
 import { routes } from './routes';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
