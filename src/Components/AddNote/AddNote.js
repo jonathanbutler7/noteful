@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import NotefulContext from '../../NotefulContext';
-import './AddNote.css';
+import styles from './AddNote.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
@@ -50,10 +50,10 @@ function AddNoteF() {
   }
 
   return (
-    <div className='viewport'>
+    <div className={styles.viewport}>
       <h2>Add Note:</h2>
-      <div className='addNoteForm'>
-        <label className='input' htmlFor='noteName'>
+      <div className={styles.addNoteForm}>
+        <label className={styles.input} htmlFor='noteName'>
           <h4>Name:</h4>
         </label>
         <input
@@ -67,7 +67,7 @@ function AddNoteF() {
         </label>
         <select
           name='select-folder'
-          id='select-folder'
+          // id={styles.selectFolder}
           onChange={(e) => updateFolderId(e.target.value)}
         >
           <option value='--Select folder--'>--Select folder--</option>
@@ -79,18 +79,18 @@ function AddNoteF() {
             );
           })}
         </select>
-        <label className='input' htmlFor='noteContent'>
+        <label className={styles.input} htmlFor='noteContent'>
           <h4>Content:</h4>
         </label>
         <textarea
           type='textarea'
-          id='textarea'
+          id={styles.textarea}
           name='noteContent'
           placeholder='Content...'
           onChange={(e) => updateNoteContent(e.target.value)}
         />
         {errorMsg && <ValidationError message={errorMsg} />}
-        <button className='addButton' onClick={(e) => validateFolderEntry(e)}>
+        <button className={styles.addButton} onClick={(e) => validateFolderEntry(e)}>
           <h5>Add</h5>
         </button>
       </div>

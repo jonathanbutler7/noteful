@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
-import FolderSelect from '../FolderSelect/FolderSelect';
-import NoteDisplay2 from '../NoteDisplay/NoteDisplay';
+import FolderSelect from '../FolderList/FolderList';
+import NoteDisplay2 from '../NoteList/NoteList';
 import styles from './NoteDetails.module.scss';
 import axios from 'axios';
 

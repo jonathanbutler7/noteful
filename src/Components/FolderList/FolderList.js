@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import './FolderSelect.css';
+import './FolderList.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 
-function FolderSelectF() {
+function FolderList() {
   const { folders, serverUrl, selectedFolder, setSelectedFolder } = useContext(
     NotefulContext
   );
@@ -73,4 +73,4 @@ function FolderSelectF() {
   );
 }
 
-export default withRouter(FolderSelectF);
+export default withRouter(FolderList);

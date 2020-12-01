@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './NoteDisplay.module.scss';
+import styles from './NoteList.module.scss';
 import NotefulContext from '../../NotefulContext';
 import axios from 'axios';
 
-function NoteDisplayF() {
+function NoteList() {
   const { serverUrl, selectedFolder, notes } = useContext(NotefulContext);
   const newNotesList = notes.filter((i) => i.folder_id === selectedFolder);
 
@@ -28,7 +28,7 @@ function NoteDisplayF() {
         let year = newMod.getFullYear();
         return (
           <div className={styles.newnotebox} key={id}>
-            <Link to={`/note?name=${note.id}`}>
+            <Link to={`/note?id=${note.id}`}>
               <h2 className={styles.noteTitle}>{note.note_name}</h2>
               <div className={styles.noteDetails}>
                 <p>Last modified {`${month + 1}/${day}/${year}`}</p>
@@ -52,4 +52,4 @@ function NoteDisplayF() {
   );
 }
 
-export default NoteDisplayF;
+export default NoteList;

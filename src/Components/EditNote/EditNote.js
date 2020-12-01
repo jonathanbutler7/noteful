@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react';
 import NotefulContext from '../../NotefulContext';
+import styles from '../AddNote/AddNote.module.scss';
 import { Link } from 'react-router-dom';
 
 function EditNote() {
-  const context = useContext(NotefulContext);
+  const { folders, notes, serverUrl } = useContext(NotefulContext);
   const [noteName, setNoteName] = useState();
   const [folderId, setFolderId] = useState();
   const [content, setContent] = useState();
 
-  const folders = context.folders;
-  const notes = context.notes;
   let noteId = parseInt(window.location.href.split('/edit-note/')[1]);
   let foundNote = notes.find((item) => item.id === noteId);
   let note_name;
@@ -37,18 +36,21 @@ function EditNote() {
       body: raw,
       redirect: 'follow',
     };
-
-    fetch(`http://localhost:8000/api/notes/${noteId}`, requestOptions)
-      .then((response) => response.text())
+    console.log(folderId);
+    fetch(`${serverUrl}/api/notes/${noteId}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        window.location.href = `/folder/${folderId}`;
+      })
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
   }
 
   return (
-    <div className='viewport'>
+    <div className={styles.viewport}>
       <h2>Edit Note:</h2>
-      <div className='addNoteForm'>
-        <label className='input' htmlFor='noteName'>
+      <div className={styles.addNoteForm}>
+        <label className={styles.input} htmlFor='noteName'>
           <h4>Name:</h4>
         </label>
         <input
@@ -74,7 +76,7 @@ function EditNote() {
             );
           })}
         </select>
-        <label className='input' htmlFor='noteContent'>
+        <label className={styles.input} htmlFor='noteContent'>
           <h4>Content:</h4>
         </label>
         <textarea
@@ -84,8 +86,8 @@ function EditNote() {
           placeholder={note_content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <Link to={`/note?name=${noteId}`}>
-          <button className='addButton' onClick={(e) => sendPatch(e)}>
+        <Link to={`/note?id=${noteId}`}>
+          <button className={styles.addButton} onClick={(e) => sendPatch(e)}>
             <h5>Submit</h5>
           </button>
         </Link>
