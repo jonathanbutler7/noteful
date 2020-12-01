@@ -52,40 +52,42 @@ class FolderSelect extends React.Component {
     };
 
     return (
-      <div className='folderSelect'>
-        <h2>Folders</h2>
-        {folders.map((folder) => {
-          return (
-            <Link
-              to={`/folder/${folder.id}`}
-              id='linkItem'
-              key={folder.id}
-              style={{ textDecoration: 'none' }}
-              name='linkToFolderContents'
-            >
-              <h4
-                onClick={(e) => this.handleToggle(e, folder.id)}
-                className={className(this.state.selectedFolder, folder.id)}
+      <div className='mainDisplay'>
+        <div className='folderSelect'>
+          <h2>Folders</h2>
+          {folders.map((folder) => {
+            return (
+              <Link
+                to={`/folder/${folder.id}`}
+                id='linkItem'
                 key={folder.id}
+                style={{ textDecoration: 'none' }}
+                name='linkToFolderContents'
               >
-                {folder.folder_name}
-                <div className='deleteCorner'>
-                  <AiFillDelete
-                    className='deleteIcon'
-                    onClick={() => this.deleteFromApi(folder.id)}
-                  />
-                </div>
-              </h4>
-            </Link>
-          );
-        })}
-        <Link
-          to={'/add-folder'}
-          className='addFolderButton'
-          name='addFolderLink'
-        >
-          <h5>Add Folder</h5>
-        </Link>
+                <h4
+                  onClick={(e) => this.handleToggle(e, folder.id)}
+                  className={className(this.state.selectedFolder, folder.id)}
+                  key={folder.id}
+                >
+                  {folder.folder_name}
+                  <div className='deleteCorner'>
+                    <AiFillDelete
+                      className='deleteIcon'
+                      onClick={() => this.deleteFromApi(folder.id)}
+                    />
+                  </div>
+                </h4>
+              </Link>
+            );
+          })}
+          <Link
+            to={'/add-folder'}
+            className='addFolderButton'
+            name='addFolderLink'
+          >
+            <h5>Add Folder</h5>
+          </Link>
+        </div>
       </div>
     );
   }

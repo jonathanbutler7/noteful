@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import StartPage from './Components/StartPage/StartPage';
+import FolderSelect from './Components/FolderSelect/FolderSelect';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NoteRoute from './Routes/NoteRoute/NoteRoute';
 import Error from './Components/ErrorPage/ErrorPage';
@@ -62,7 +62,7 @@ function AppF() {
         <Header title={'Noteful'} />
         <ErrorBoundary>
           <Switch>
-            <Route exact path='/' component={StartPage} />
+            <Route exact path='/' component={FolderSelect} />
             <Route path='/folder/:folderId' component={NoteRoute} />
             <Route path='/add-folder' component={AddFolderF} />
             <Route path='/add-note' component={AddNote} />
