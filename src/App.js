@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { routes } from './dummy-store';
+import { ErrorBoundary } from 'react-error-boundary';
+import { routes } from './routes';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';
-import NoteDetails from './Components/NoteDetails/NoteDetails';
-import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import axios from 'axios';
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
-function AppF() {
+function App() {
   const [notes, setNotes] = useState([]);
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
-  const [error, setError] = useState(true);
 
   useEffect(() => {
     getData('folders');
@@ -52,6 +49,7 @@ function AppF() {
         }}
       >
         <Header title={'Noteful'} />
+        <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
             {routes.map((route) =>
               route.exact ? (
@@ -60,19 +58,11 @@ function AppF() {
                 <Route path={route.path} component={route.component} />
               )
             )}
-            <Route
-              path='/note'
-              render={(routeProps) => (
-                <NoteDetails
-                  //route props object with location, history, and match
-                  {...routeProps}
-                />
-              )}
-            />
           </Switch>
+        </ErrorBoundary>
       </NotefulContext.Provider>
     </BrowserRouter>
   );
 }
 
-export default AppF;
+export default App;

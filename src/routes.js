@@ -3,6 +3,7 @@ import NoteRoute from './Components/NoteRoute/NoteRoute';
 import AddFolder from './Components/AddFolder/AddFolder';
 import AddNote from './Components/AddNote/AddNote';
 import EditNote from './Components/EditNote/EditNote';
+import NoteDetails from './Components/NoteDetails/NoteDetails';
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/edit-note/:note_id',
     component: EditNote,
   },
+  {
+    exact: false,
+    path: '/note',
+    component: NoteDetails
+  }
 ];
 
 export { routes };
