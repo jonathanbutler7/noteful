@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import FolderSelect from './Components/FolderSelect/FolderSelect';
+import FolderSelect from './Components/FolderSelect/FolderSelectF';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NoteRoute from './Routes/NoteRoute/NoteRoute';
 import Error from './Components/ErrorPage/ErrorPage';
