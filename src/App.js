@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import FolderSelect from './Components/FolderList/FolderList';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import NoteRoute from './Routes/NoteRoute/NoteRoute';
+import NoteRoute from './Components/NoteRoute/NoteRoute';
 import Error from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';

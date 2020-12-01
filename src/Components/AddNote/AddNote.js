@@ -36,6 +36,7 @@ function AddNoteF() {
     try {
       const response = axios.post(url, note);
       const result = response.data;
+      console.log(result);
       window.location.href = `/folder/${folderId}`;
     } catch (error) {
       setErrorMsg(error);

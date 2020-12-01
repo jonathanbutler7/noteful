@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import NotefulContext from '../../NotefulContext';
-import './AddFolder.css';
+import styles from './AddFolder.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
@@ -39,23 +39,23 @@ function AddFolderF() {
   }
 
   return (
-    <div className='viewport'>
+    <div className={styles.viewport}>
       <h2>Add Folder:</h2>
-      <div className='addFolderForm'>
-        <label className='input' htmlFor='folderName'>
+      <div className={styles.addFolderForm}>
+        <label className={styles.input} htmlFor='folderName'>
           <h4>Folder name:</h4>
         </label>
 
         <input
           type='text'
           placeholder='Folder name...'
-          id='folderNameEntry'
+          id={styles.folderNameEntry}
           name='folderName'
           onChange={(e) => updateFolder(e.target.value)}
         />
         {!value && errorMsg && <ValidationError message={errorMsg} />}
         <button
-          className='addFolderButton'
+          className={styles.addFolderButton}
           onClick={(e) => validateFolderEntry(e)}
         >
           <h5>Add</h5>
