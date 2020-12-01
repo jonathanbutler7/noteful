@@ -6,11 +6,12 @@ import NoteRoute from './Routes/NoteRoute/NoteRoute';
 import Error from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';
-import AddFolder from './Components/AddFolder/AddFolder';
+import AddFolderF from './Components/AddFolder/AddFolderF';
 import NoteDetails from './Components/NoteDetails/NoteDetails';
 import AddNote from './Components/AddNote/AddNote';
 import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import EditNote from './Components/EditNote/EditNote';
+const serverUrl = process.env.REACT_APP_SERVER_URL
 
 class App extends React.Component {
   state = {
@@ -19,6 +20,7 @@ class App extends React.Component {
     folderId: [],
     selectedFolder: null,
   };
+
 
   componentDidMount() {
     fetch('http://localhost:8000/api/folders', {
@@ -84,6 +86,7 @@ class App extends React.Component {
             deleteFolder: this.deleteFolder,
             setSelectedFolder: this.setSelectedFolder,
             setSelectedNote: this.setSelectedNote,
+            serverUrl: serverUrl
           }}
         >
           <Header title={'Noteful'} />
@@ -91,7 +94,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={StartPage} />
               <Route path='/folder/:folderId' component={NoteRoute} />
-              <Route path='/add-folder' component={AddFolder} />
+              <Route path='/add-folder' component={AddFolderF} />
               <Route path='/add-note' component={AddNote} />
               <Route exact path='/edit-note/:note_id' component={EditNote} />
               <Route

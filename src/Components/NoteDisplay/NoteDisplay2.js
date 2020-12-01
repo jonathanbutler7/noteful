@@ -44,7 +44,7 @@ function NoteDisplay2() {
           //   onClick={(e) => toggleNoteClass(e, id)}
           //   className="newnotebox"
           // >
-          <div className='newnotebox'>
+          <div className='newnotebox' key={id}>
             <Link to={`/note?name=${note.id}`}>
               <h2 className='noteTitle'>{note.note_name}</h2>
               <div className='noteDetails'>

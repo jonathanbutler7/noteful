@@ -35,10 +35,9 @@ export default class NoteDetails extends React.Component {
     const params = this.props.location.search;
 
     let noteId = parseInt(params.split("=")[1]);
-    console.log(notes, noteId)
     let foundNote = notes.find((item) => item.id === noteId);
     // let foundNote = notes.find((item) => console.log(item.id));
-    console.log(foundNote)
+    
     let readableDate = "";
     let folderId = "";
     if (foundNote) {
