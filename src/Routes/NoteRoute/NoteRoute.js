@@ -1,7 +1,7 @@
 import React from 'react';
-import NoteDisplay2 from '../../Components/NoteDisplay/NoteDisplayF';
+import NoteDisplay2 from '../../Components/NoteDisplay/NoteDisplay';
 import './NoteRoute.css';
-import FolderSelect from '../../Components/FolderSelect/FolderSelectF';
+import FolderSelect from '../../Components/FolderSelect/FolderSelect';
 
 export default function NoteRoute(props) {
   return (

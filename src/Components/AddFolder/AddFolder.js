@@ -1,88 +1,68 @@
-// import React from 'react';
-// import './AddFolder.css';
-// import ValidationError from '../ValidationError/ValidationError';
+import React, { useState, useContext } from 'react';
+import NotefulContext from '../../NotefulContext';
+import './AddFolder.css';
+import ValidationError from '../ValidationError/ValidationError';
+import axios from 'axios';
 
-// export default class AddFolder extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       folderName: '',
-//       value: false,
-//       errorMsg: '',
-//     };
-//   }
+function AddFolderF() {
+  const { serverUrl } = useContext(NotefulContext);
+  const [folderName, setFolderName] = useState('');
+  const [value, setValue] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-//   updateFolder(folder) {
-//     this.setState({
-//       folderName: folder,
-//       value: true,
-//     });
-//     !folder.length && this.setState({ value: false });
-//   }
+  function updateFolder(folder) {
+    setFolderName(folder);
+    setValue(true);
+    !folder.length && setValue(false);
+  }
 
-//   validateFolderEntry(e) {
-//     const textPresent = this.state.value;
-//     !textPresent
-//       ? this.setState({ errorMsg: 'please enter some text' })
-//       : this.handleSubmit(e);
-//   }
+  function validateFolderEntry(e) {
+    const textPresent = value;
+    !textPresent ? setErrorMsg('please enter some text') : handleSubmit(e);
+  }
 
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     const folderName = {
-//       folder_name: this.state.folderName,
-//     };
-//     fetch('http://localhost:8000/api/folders', {
-//       method: 'POST',
-//       body: JSON.stringify(folderName),
-//       headers: {
-//         'content-type': 'application/json',
-//       },
-//     })
-//       .then((res) => {
-//         if (!res.ok) {
-//           return res.json().then((error) => {
-//             throw error;
-//           });
-//         }
-//         return res.json();
-//       })
-//       .then((res) => (window.location.href = '/'))
-//       .catch((error) => {
-//         this.setState({
-//           errorMsg: 'Failed to add folder to server',
-//           value: false,
-//         });
-//       });
-//   };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const folder_name = folderName;
+    const body = { folder_name };
+    const url = `${serverUrl}/api/folders`;
+    try {
+      const response = axios.post(url, body);
+      const result = response.data;
+      console.log(result);
+      window.location.href = '/';
+    } catch (error) {
+      console.error(error);
+      setErrorMsg('Failed to add folder to server.');
+      setValue(false);
+    }
+  }
 
-//   render() {
-//     return (
-//       <div className='viewport'>
-//         <h2>Add Folder:</h2>
-//         <div className='addFolderForm'>
-//           <label className='input' htmlFor='folderName'>
-//             <h4>Folder name:</h4>
-//           </label>
+  return (
+    <div className='viewport'>
+      <h2>Add Folder:</h2>
+      <div className='addFolderForm'>
+        <label className='input' htmlFor='folderName'>
+          <h4>Folder name:</h4>
+        </label>
 
-//           <input
-//             type='text'
-//             placeholder='Folder name...'
-//             id='folderNameEntry'
-//             name='folderName'
-//             onChange={(e) => this.updateFolder(e.target.value)}
-//           />
-//           {!this.state.value && this.state.errorMsg && (
-//             <ValidationError message={this.state.errorMsg} />
-//           )}
-//           <button
-//             className='addFolderButton'
-//             onClick={(e) => this.validateFolderEntry(e)}
-//           >
-//             <h5>Add</h5>
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+        <input
+          type='text'
+          placeholder='Folder name...'
+          id='folderNameEntry'
+          name='folderName'
+          onChange={(e) => updateFolder(e.target.value)}
+        />
+        {!value && errorMsg && <ValidationError message={errorMsg} />}
+        <button
+          className='addFolderButton'
+          onClick={(e) => validateFolderEntry(e)}
+        >
+          <h5>Add</h5>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default AddFolderF;
