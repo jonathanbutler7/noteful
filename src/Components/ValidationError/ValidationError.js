@@ -1,11 +1,11 @@
 import React from 'react';
-import './ValidationError.css';
+import styles from './ValidationError.module.scss';
 
 export default function ValidationError(props) {
   if (props.message) {
     return (
-      <div className='validation'>
-        <h6 className='error'>{props.message}</h6>
+      <div className={styles.validation}>
+        <h6 className={styles.error}>{props.message}</h6>
       </div>
     );
   }

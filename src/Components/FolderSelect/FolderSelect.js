@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './FolderSelect.css';
+import styles from './FolderSelect.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
