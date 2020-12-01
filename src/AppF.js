@@ -8,7 +8,7 @@ import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';
 import AddFolderF from './Components/AddFolder/AddFolderF';
 import NoteDetails from './Components/NoteDetails/NoteDetails';
-import AddNote from './Components/AddNote/AddNote';
+import AddNote from './Components/AddNote/AddNoteF';
 import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import EditNote from './Components/EditNote/EditNote';
 import axios from 'axios';
