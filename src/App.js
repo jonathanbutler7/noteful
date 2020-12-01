@@ -14,7 +14,7 @@ function App() {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
-
+  console.log(serverUrl);
   useEffect(() => {
     getData('folders');
     getData('notes');
