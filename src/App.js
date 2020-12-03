@@ -8,14 +8,13 @@ import Header from './Components/Header/Header';
 import NotefulContext from './NotefulContext';
 import axios from 'axios';
 // const serverUrl = process.env.REACT_APP_SERVER_URL;
-const serverUrl = 'https://noteful-server-11.herokuapp.com'
+const serverUrl = 'https://noteful-server-11.herokuapp.com';
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
-  console.log(serverUrl);
   useEffect(() => {
     getData('folders');
     getData('notes');
