@@ -5,6 +5,7 @@ import FolderSelect from '../FolderList/FolderList';
 import NoteDisplay2 from '../NoteList/NoteList';
 import styles from './NoteDetails.module.scss';
 import axios from 'axios';
+import moment from 'moment';
 
 function NoteDetailsF(props) {
   const { notes, serverUrl } = useContext(NotefulContext);
@@ -18,11 +19,8 @@ function NoteDetailsF(props) {
   let folderId = '';
   if (foundNote) {
     folderId = foundNote.folderId;
-    let newMod = new Date(foundNote.date_created);
-    let month = newMod.getMonth();
-    let day = newMod.getDay();
-    let year = newMod.getFullYear();
-    readableDate = `${month + 1}/${day}/${year}`;
+    const time = Math.floor(Date.parse(foundNote.date_created) / 1000);
+    readableDate = moment.unix(time).format('LLL');
   }
 
   async function deleteFromApi(id) {
