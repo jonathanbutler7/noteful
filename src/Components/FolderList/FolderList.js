@@ -25,7 +25,7 @@ function FolderList() {
     }
   }
 
-  function handleToggle(e, folderId) {
+  function handleToggle(folderId) {
     setSelectedFolder(folderId);
   }
 
@@ -35,6 +35,7 @@ function FolderList() {
     }
     return 'folderItem';
   }
+  
   return (
     <div className='mainDisplay'>
       <div className='folderSelect'>
@@ -54,7 +55,7 @@ function FolderList() {
               name='linkToFolderContents'
             >
               <h4
-                onClick={(e) => handleToggle(e, folder.id)}
+                onClick={() => handleToggle(folder.id)}
                 className={className(selectedFolder, folder.id)}
                 key={folder.id}
               >

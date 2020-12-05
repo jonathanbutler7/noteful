@@ -29,9 +29,7 @@ function NoteDetailsF(props) {
           <p>Content: {foundNote.content}</p>
           <p>Last modified {readableDate}</p>
           <Link to={`edit-note/${foundNote.id}`}>
-            <button
-              id={styles.folderDelete}
-            >
+            <button id={styles.folderDelete}>
               <h5>Edit</h5>
             </button>
           </Link>
