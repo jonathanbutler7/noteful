@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import NotefulContext from '../../NotefulContext';
+import { useNoteful } from '../../NotefulContext';
 import styles from './AddNote.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
 function AddNote() {
-  const { folders, serverUrl } = useContext(NotefulContext);
+  const { folders, serverUrl } = useNoteful();
   const [errorMsg, setErrorMsg] = useState('');
   const [note, setNote] = useState({
     name: '',

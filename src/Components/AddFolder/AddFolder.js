@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react';
-import NotefulContext from '../../NotefulContext';
+import React, { useState } from 'react';
+import { useNoteful } from '../../NotefulContext';
 import styles from './AddFolder.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
 function AddFolderF() {
-  const { serverUrl } = useContext(NotefulContext);
+  const { serverUrl } = useNoteful();
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-
   function updateFolder(folder) {
     setFolderName(folder);
     setValue(true);
@@ -26,11 +25,12 @@ function AddFolderF() {
     const folder_name = folderName;
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
+    console.log(body, url);
     try {
       const response = axios.post(url, body);
       const result = response.data;
       console.log(result);
-      window.location.href = '/';
+      // window.location.href = '/';
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');

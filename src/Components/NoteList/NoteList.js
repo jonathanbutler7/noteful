@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NoteList.module.scss';
-import NotefulContext from '../../NotefulContext';
+import { useNoteful } from '../../NotefulContext';
 import axios from 'axios';
 import moment from 'moment';
 
 function NoteList() {
-  const { serverUrl, selectedFolder, notes } = useContext(NotefulContext);
+  const { serverUrl, selectedFolder, notes } = useNoteful();
   const newNotesList = notes.filter((i) => i.folder_id === selectedFolder);
 
   async function deleteFromApi(id) {

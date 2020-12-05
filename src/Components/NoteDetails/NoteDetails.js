@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import NotefulContext from '../../NotefulContext';
+import { useNoteful } from '../../NotefulContext';
 import FolderSelect from '../FolderList/FolderList';
 import NoteDisplay2 from '../NoteList/NoteList';
 import styles from './NoteDetails.module.scss';
@@ -8,7 +8,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 function NoteDetailsF(props) {
-  const { notes, serverUrl } = useContext(NotefulContext);
+  const { notes, serverUrl } = useNoteful();
   const params = props.location.search;
 
   let noteId = parseInt(params.split('=')[1]);

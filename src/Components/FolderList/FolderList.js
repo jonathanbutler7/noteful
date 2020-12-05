@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './FolderList.css';
 import { Link } from 'react-router-dom';
-import NotefulContext from '../../NotefulContext';
+import { useNoteful } from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 
 function FolderList() {
-  const { folders, serverUrl, selectedFolder, setSelectedFolder } = useContext(
-    NotefulContext
-  );
+  const {
+    folders,
+    serverUrl,
+    selectedFolder,
+    setSelectedFolder,
+  } = useNoteful();
 
   async function deleteFromApi(id) {
     const url = `${serverUrl}/api/folders/${id}`;

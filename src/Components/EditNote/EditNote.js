@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
-import NotefulContext from '../../NotefulContext';
+import React, { useState } from 'react';
+import { useNoteful } from '../../NotefulContext';
 import styles from '../AddNote/AddNote.module.scss';
 import { Link } from 'react-router-dom';
 
 function EditNote() {
-  const { folders, notes, serverUrl } = useContext(NotefulContext);
+  const { folders, notes, serverUrl } = useNoteful();
   const [noteName, setNoteName] = useState();
   const [folderId, setFolderId] = useState();
   const [content, setContent] = useState();
