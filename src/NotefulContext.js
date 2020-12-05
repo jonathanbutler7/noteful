@@ -47,6 +47,7 @@ export function NotefulProvider({ children }) {
     selectedNote,
     serverUrl,
   };
+
   return (
     <NotefulContext.Provider value={value}>{children}</NotefulContext.Provider>
   );

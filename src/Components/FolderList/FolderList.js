@@ -38,7 +38,12 @@ function FolderList() {
   return (
     <div className='mainDisplay'>
       <div className='folderSelect'>
-        <h2>Folders <span aria-label='jsx-a11y/accessible-emoji' role='img'>📁</span></h2>
+        <h2>
+          Folders{' '}
+          <span aria-label='jsx-a11y/accessible-emoji' role='img'>
+            📁
+          </span>
+        </h2>
         {folders.map((folder) => {
           return (
             <Link

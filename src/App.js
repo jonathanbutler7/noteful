@@ -10,8 +10,8 @@ import Header from './Components/Header/Header';
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <NotefulProvider>
-        <Header title={'Noteful 📝'} />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
             {routes.map((route, idx) =>
