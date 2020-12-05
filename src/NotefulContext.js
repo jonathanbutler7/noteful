@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, createContext } from 'react';
 import axios from 'axios';
-
-const NotefulContext = React.createContext({});
 const serverUrl = 'https://noteful-server-11.herokuapp.com';
+const NotefulContext = createContext();
 
 export function useNoteful() {
   return useContext(NotefulContext);
