@@ -30,7 +30,6 @@ function AddNote() {
       folder_id: parseInt(folderId),
     };
     const url = `${serverUrl}/api/notes`;
-    console.log(newNote, url);
     try {
       const response = await axios.post(url, newNote);
       const result = response.data;

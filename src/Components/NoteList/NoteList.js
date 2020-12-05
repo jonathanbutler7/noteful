@@ -22,7 +22,12 @@ function NoteList() {
 
   return (
     <div className={styles.notebox}>
-      <h2>Notes ✏️</h2>
+      <h2>
+        Notes{' '}
+        <span aria-label='jsx-a11y/accessible-emoji' role='img'>
+          ✏️
+        </span>
+      </h2>
       {newNotesList.map((note, id) => {
         const time = Math.floor(Date.parse(note.date_created) / 1000);
         var dateString = moment.unix(time).format('LLL');

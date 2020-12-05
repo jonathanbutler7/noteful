@@ -16,8 +16,11 @@ export function NotefulProvider({ children }) {
 
   useEffect(() => {
     getData('folders');
+  }, [folders]);
+
+  useEffect(() => {
     getData('notes');
-  }, []);
+  }, [notes]);
 
   async function getData(param) {
     const url = `${serverUrl}/api/${param}`;
