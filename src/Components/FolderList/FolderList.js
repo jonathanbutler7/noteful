@@ -17,7 +17,7 @@ function FolderList() {
   async function deleteFromApi(id) {
     const url = `${serverUrl}/api/folders/${id}`;
     try {
-      const response = axios.delete(url);
+      const response = await axios.delete(url);
       const result = response.data;
       console.log(result);
     } catch (error) {
@@ -35,7 +35,7 @@ function FolderList() {
     }
     return 'folderItem';
   }
-  
+
   return (
     <div className='mainDisplay'>
       <div className='folderSelect'>

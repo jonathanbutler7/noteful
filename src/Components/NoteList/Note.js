@@ -25,7 +25,7 @@ function Note({ note, id }) {
       <Link to={`/note?id=${note.id}`}>
         <h2 className={styles.noteTitle}>{note.note_name}</h2>
         <div className={styles.noteDetails}>
-          <p>{dateString}</p>
+          <p><strong>Last modified: </strong>{dateString}</p>
           <button
             id={styles.folderDelete}
             onClick={() => deleteFromApi(note.id)}
