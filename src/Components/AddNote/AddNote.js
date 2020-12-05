@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNoteful } from '../../NotefulContext';
 import styles from './AddNote.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
@@ -21,7 +21,7 @@ function AddNote() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const { name, content, folderId } = note;
     const newNote = {
@@ -29,10 +29,10 @@ function AddNote() {
       content: content,
       folder_id: parseInt(folderId),
     };
-
     const url = `${serverUrl}/api/notes`;
+    console.log(newNote, url);
     try {
-      const response = axios.post(url, newNote);
+      const response = await axios.post(url, newNote);
       const result = response.data;
       console.log(result);
       window.location.href = `/folder/${folderId}`;
