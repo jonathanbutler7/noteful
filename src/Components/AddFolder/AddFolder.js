@@ -9,6 +9,7 @@ function AddFolderF() {
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  
   function updateFolder(folder) {
     setFolderName(folder);
     setValue(true);
@@ -25,7 +26,7 @@ function AddFolderF() {
     const folder_name = folderName;
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
-    console.log(body, url);
+
     try {
       const response = axios.post(url, body);
       const result = response.data;

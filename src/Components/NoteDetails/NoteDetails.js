@@ -45,7 +45,6 @@ function NoteDetailsF(props) {
           <Link to={`edit-note/${foundNote.id}`}>
             <button
               id={styles.folderDelete}
-              onClick={() => deleteFromApi(foundNote.id)}
             >
               <h5>Edit</h5>
             </button>

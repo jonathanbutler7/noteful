@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNoteful } from '../../NotefulContext';
 import styles from '../AddNote/AddNote.module.scss';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function EditNote() {
   const { folders, notes, serverUrl } = useNoteful();
@@ -18,32 +19,22 @@ function EditNote() {
     note_content = foundNote.content;
   }
 
-  function sendPatch(e) {
+  async function sendPatch(e) {
     e.preventDefault();
-
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-
-    var raw = JSON.stringify({
-      content: content,
+    const url = `${serverUrl}/api/notes/${noteId}`;
+    const newNote = {
+      content,
       note_name: noteName,
       folder_id: folderId,
-    });
-
-    var requestOptions = {
-      method: 'PATCH',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
     };
-    console.log(folderId);
-    fetch(`${serverUrl}/api/notes/${noteId}`, requestOptions)
-      .then((response) => response.json())
-      .then((res) => {
-        window.location.href = `/folder/${folderId}`;
-      })
-      .then((result) => console.log(result))
-      .catch((error) => console.log('error', error));
+    try {
+      const response = await axios.patch(url, newNote);
+      const result = response.data;
+      console.log(result);
+      window.location.href = `/folder/${folderId}`;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
