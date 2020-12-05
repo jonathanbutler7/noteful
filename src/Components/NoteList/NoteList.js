@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './NoteList.module.scss';
 import NotefulContext from '../../NotefulContext';
 import axios from 'axios';
+import moment from 'moment';
 
 function NoteList() {
   const { serverUrl, selectedFolder, notes } = useContext(NotefulContext);
@@ -23,16 +24,14 @@ function NoteList() {
     <div className={styles.notebox}>
       <h2>Notes ✏️</h2>
       {newNotesList.map((note, id) => {
-        let newMod = new Date(note.date_created);
-        let month = newMod.getMonth();
-        let day = newMod.getDay();
-        let year = newMod.getFullYear();
+        const time = Math.floor(Date.parse(note.date_created) / 1000);
+        var dateString = moment.unix(time).format('LLL');
         return (
           <div className={styles.newnotebox} key={id}>
             <Link to={`/note?id=${note.id}`}>
               <h2 className={styles.noteTitle}>{note.note_name}</h2>
               <div className={styles.noteDetails}>
-                <p>Last modified {`${month + 1}/${day}/${year}`}</p>
+                <p>{dateString}</p>
                 <button
                   id={styles.folderDelete}
                   onClick={() => deleteFromApi(note.id)}
