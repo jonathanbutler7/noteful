@@ -35,7 +35,7 @@ function FolderList() {
   return (
     <div className='mainDisplay'>
       <div className='folderSelect'>
-        <h2>Folders</h2>
+        <h2>Folders 📁</h2>
         {folders.map((folder) => {
           return (
             <Link

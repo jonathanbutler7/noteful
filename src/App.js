@@ -49,7 +49,7 @@ function App() {
           serverUrl,
         }}
       >
-        <Header title={'Noteful'} />
+        <Header title={'Noteful 🗒️'} />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
             {routes.map((route, idx) =>

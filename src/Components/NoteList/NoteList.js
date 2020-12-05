@@ -21,6 +21,7 @@ function NoteList() {
 
   return (
     <div className={styles.notebox}>
+      <h2>Notes ✏️</h2>
       {newNotesList.map((note, id) => {
         let newMod = new Date(note.date_created);
         let month = newMod.getMonth();
