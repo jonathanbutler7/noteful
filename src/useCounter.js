@@ -12,6 +12,7 @@ function useCounter() {
       setIsRunning(false);
       if (toastRoute !== null) history.push(toastRoute);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);
 
   useInterval(
