@@ -1,0 +1,25 @@
+.toast {
+    border: 1px solid black;
+    margin: 2rem;
+    position: absolute;
+    z-index: 100;
+    background: #F5F5F5;
+    padding: 1rem;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    strong,
+    small {
+        margin: 1rem 0;
+    }
+    small {
+        display: flex;
+        text-decoration: underline;
+        float: right;
+    }
+    p {
+        margin: 0;
+        display: flex;
+    }
+}

@@ -1,21 +1,15 @@
 import React from 'react';
 import { useNoteful } from '../../NotefulContext';
+import { useHistory } from 'react-router-dom';
+import styles from './Toast.module.scss';
 import counter from '../Counter/Counter';
 
 function Toasty() {
-  const { showToast, setShowToast, toastMessage } = useNoteful();
+  const { showToast, setShowToast, toastMessage, setCount } = useNoteful();
   const number = counter();
-
-  const styles = {
-    border: '1px solid black',
-    margin: '2rem',
-    position: 'absolute',
-    zIndex: '100',
-    background: '#F5F5F5',
-    padding: '1rem',
-    right: '0',
-    top: '0',
-  };
+  const history = useHistory();
+  const message =
+    history.location.pathname !== '/' ? 'Taking you home in: ' : 'Closing in: ';
 
   return (
     <>
@@ -23,12 +17,15 @@ function Toasty() {
         <div
           show={showToast.toString()}
           onClose={() => setShowToast(!showToast)}
-          style={styles}
+          className={styles.toast}
         >
-          <div>
-            <strong>{toastMessage}</strong>
-          </div>
-          <small>Taking you home in: {number}</small>
+          <strong>{toastMessage}</strong>
+          <small>
+            {message} {number}
+          </small>
+          <button onClick={() => setCount(0)}>
+            <p>close</p>
+          </button>
         </div>
       )}
     </>

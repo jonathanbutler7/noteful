@@ -9,7 +9,7 @@ function AddFolder() {
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  
+
   function updateFolder(folder) {
     setFolderName(folder);
     setValue(true);
@@ -27,11 +27,11 @@ function AddFolder() {
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
     restartTimer();
-    setToastMessage(`Added a folder called '${folderName}'`);
+    setToastMessage(`Added folder called '${folderName}'`);
     try {
       const response = await axios.post(url, body);
       const result = response.data;
-      console.log(result);
+      return result;
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');

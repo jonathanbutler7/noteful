@@ -10,7 +10,7 @@ function Counter() {
   useEffect(() => {
     if (count < 1) {
       setIsRunning(false);
-      if (history.pathname !== '/') {
+      if (history.location.pathname !== '/') {
         history.push('/');
       }
     }
