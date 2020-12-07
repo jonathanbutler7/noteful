@@ -6,7 +6,7 @@ import { useNoteful } from '../../NotefulContext';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function Note({ note, id }) {
+function ListItem({ note, id }) {
   const {
     serverUrl,
     restartTimer,
@@ -53,4 +53,4 @@ function Note({ note, id }) {
   );
 }
 
-export default Note;
+export default ListItem;

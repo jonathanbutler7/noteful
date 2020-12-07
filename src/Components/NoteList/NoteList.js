@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NoteList.module.scss';
 import { useNoteful } from '../../NotefulContext';
-import Note from './Note';
+import ListItem from './ListItem';
 
 function NoteList() {
   const { selectedFolder, notes } = useNoteful();
@@ -17,7 +17,7 @@ function NoteList() {
         </span>
       </h2>
       {newNotesList.map((note, id) => (
-        <Note note={note} id={id} key={id} />
+        <ListItem note={note} id={id} key={id} />
       ))}
       <div className={styles.addButton}>
         <Link to={'/add-note'} name='linkToAddNote'>
