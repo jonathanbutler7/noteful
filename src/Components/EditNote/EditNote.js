@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function EditNote() {
-  const { folders, notes, serverUrl } = useNoteful();
+  const {
+    folders,
+    notes,
+    serverUrl,
+    restartTimer,
+    setToastMessage,
+  } = useNoteful();
   const [noteName, setNoteName] = useState();
   const [folderId, setFolderId] = useState();
   const [content, setContent] = useState();
@@ -30,8 +36,10 @@ function EditNote() {
     try {
       const response = await axios.patch(url, newNote);
       const result = response.data;
-      console.log(result);
-      window.location.href = `/folder/${folderId}`;
+      restartTimer();
+      setToastMessage(`Edited note called '${noteName}'`);
+      return result;
+      // window.location.href = `/folder/${folderId}`;
     } catch (error) {
       console.error(error);
     }

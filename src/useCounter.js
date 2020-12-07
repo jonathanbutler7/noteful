@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useNoteful } from '../../NotefulContext';
-import { useInterval } from '../../useInterval';
+import { useNoteful } from './NotefulContext';
+import { useInterval } from './useInterval';
 
-function Counter() {
+function useCounter() {
   const { count, setCount, setIsRunning, isRunning } = useNoteful();
   const history = useHistory();
 
@@ -26,4 +26,4 @@ function Counter() {
   return count > 0 ? count : 0;
 }
 
-export default Counter;
+export default useCounter;

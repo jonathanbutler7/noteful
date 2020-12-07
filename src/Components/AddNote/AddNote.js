@@ -5,7 +5,7 @@ import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
 function AddNote() {
-  const { folders, serverUrl } = useNoteful();
+  const { folders, serverUrl, setToastMessage, restartTimer } = useNoteful();
   const [errorMsg, setErrorMsg] = useState('');
   const [note, setNote] = useState({
     name: '',
@@ -33,8 +33,10 @@ function AddNote() {
     try {
       const response = await axios.post(url, newNote);
       const result = response.data;
-      console.log(result);
-      window.location.href = `/folder/${folderId}`;
+      restartTimer();
+      setToastMessage(`Added note called '${name}'`);
+      return result;
+      // window.location.href = `/folder/${folderId}`;
     } catch (error) {
       setErrorMsg(error);
     }

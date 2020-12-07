@@ -26,11 +26,11 @@ function AddFolder() {
     const folder_name = folderName;
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
-    restartTimer();
-    setToastMessage(`Added folder called '${folderName}'`);
     try {
       const response = await axios.post(url, body);
       const result = response.data;
+      restartTimer();
+      setToastMessage(`Added folder called '${folderName}'`);
       return result;
     } catch (error) {
       console.error(error);

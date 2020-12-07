@@ -6,16 +6,18 @@ import { useNoteful } from '../../NotefulContext';
 import axios from 'axios';
 
 function Note({ note, id }) {
-  const { serverUrl } = useNoteful();
+  const { serverUrl, restartTimer, setToastMessage } = useNoteful();
   const time = Math.floor(Date.parse(note.date_created) / 1000);
   var dateString = moment.unix(time).format('LLL');
 
-  async function deleteFromApi(id) {
+  async function deleteFromApi(id, noteName) {
     const url = `${serverUrl}/api/notes/${id}`;
     try {
       const response = await axios.delete(url);
       const result = response.data;
-      console.log(result);
+      restartTimer();
+      setToastMessage(`Deleted note, '${noteName}'`);
+      return result;
     } catch (error) {
       console.error(error);
     }
@@ -25,10 +27,13 @@ function Note({ note, id }) {
       <Link to={`/note?id=${note.id}`}>
         <h2 className={styles.noteTitle}>{note.note_name}</h2>
         <div className={styles.noteDetails}>
-          <p><strong>Last modified: </strong>{dateString}</p>
+          <p>
+            <strong>Last modified: </strong>
+            {dateString}
+          </p>
           <button
             id={styles.folderDelete}
-            onClick={() => deleteFromApi(note.id)}
+            onClick={() => deleteFromApi(note.id, note.note_name)}
           >
             <h5>Delete</h5>
           </button>

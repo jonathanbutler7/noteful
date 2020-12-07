@@ -2,11 +2,11 @@ import React from 'react';
 import { useNoteful } from '../../NotefulContext';
 import { useHistory } from 'react-router-dom';
 import styles from './Toast.module.scss';
-import counter from '../Counter/Counter';
+import useCounter from '../../useCounter';
 
 function Toasty() {
   const { showToast, setShowToast, toastMessage, setCount } = useNoteful();
-  const number = counter();
+  const number = useCounter();
   const history = useHistory();
   const message =
     history.location.pathname !== '/' ? 'Taking you home in: ' : 'Closing in: ';
