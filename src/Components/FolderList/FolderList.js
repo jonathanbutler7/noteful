@@ -1,13 +1,12 @@
 import React from 'react';
 import './FolderList.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNoteful } from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 
 function FolderList() {
-  const history = useHistory();
   const {
     folders,
     serverUrl,

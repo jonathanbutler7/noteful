@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { useNoteful } from '../../NotefulContext';
-import { useHistory } from 'react-router-dom';
 import styles from './AddFolder.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
 function AddFolder() {
-  const { serverUrl, setShowToast, setToastMessage, restartTimer } = useNoteful();
+  const { serverUrl, setToastMessage, restartTimer } = useNoteful();
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const history = useHistory();
+  
   function updateFolder(folder) {
     setFolderName(folder);
     setValue(true);
@@ -28,7 +27,7 @@ function AddFolder() {
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
     restartTimer();
-    setToastMessage(`You added a folder called '${folderName}'`);
+    setToastMessage(`Added a folder called '${folderName}'`);
     try {
       const response = await axios.post(url, body);
       const result = response.data;

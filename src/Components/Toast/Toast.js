@@ -1,7 +1,7 @@
 import React from 'react';
-import { Toast } from 'react-bootstrap';
 import { useNoteful } from '../../NotefulContext';
 import counter from '../Counter/Counter';
+
 function Toasty() {
   const { showToast, setShowToast, toastMessage } = useNoteful();
   const number = counter();

@@ -6,14 +6,13 @@ import { routes } from './routes';
 import { NotefulProvider } from './NotefulContext';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
-import Toast from './Components/Toast/Toast'
-import Counter from './Components/Counter/Counter'
+import Toast from './Components/Toast/Toast';
+
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <NotefulProvider>
-      {/* <Counter /> */}
         <Toast />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
