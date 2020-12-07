@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNoteful } from '../../NotefulContext';
 import styles from '../AddNote/AddNote.module.scss';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,9 @@ function EditNote() {
   if (foundNote) {
     note_name = foundNote.note_name;
     note_content = foundNote.content;
+    noteId = foundNote.id
   }
+  console.log(note_name);
 
   async function sendPatch(e) {
     e.preventDefault();
@@ -36,7 +38,7 @@ function EditNote() {
     try {
       const response = await axios.patch(url, newNote);
       const result = response.data;
-      restartTimer();
+      restartTimer(`/note?id=${noteId}`);
       setToastMessage(`Edited note called '${noteName}'`);
       return result;
       // window.location.href = `/folder/${folderId}`;
@@ -55,7 +57,7 @@ function EditNote() {
         <input
           type='text'
           name='noteName'
-          placeholder={note_name}
+          defaultValue={note_name}
           onChange={(e) => setNoteName(e.target.value)}
         />
         <label htmlFor='select-folder'>
@@ -82,7 +84,7 @@ function EditNote() {
           type='textarea'
           id='textarea'
           name='noteContent'
-          placeholder={note_content}
+          defaultValue={note_content}
           onChange={(e) => setContent(e.target.value)}
         />
         <Link to={`/note?id=${noteId}`}>

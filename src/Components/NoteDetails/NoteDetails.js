@@ -27,7 +27,7 @@ function NoteDetailsF(props) {
         <div className={styles.note__box}>
           <h2>{foundNote.note_name}</h2>
           <p><strong>Content:</strong> {foundNote.content}</p>
-          <p><strong>Last modified:</strong> {readableDate}</p>
+          <p><strong>Created:</strong> {readableDate}</p>
           <Link to={`edit-note/${foundNote.id}`}>
             <button id={styles.folderDelete}>
               <h5>Edit</h5>

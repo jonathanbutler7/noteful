@@ -21,7 +21,7 @@ function FolderList() {
     try {
       const response = await axios.delete(url);
       const result = response.data;
-      restartTimer();
+      restartTimer('/');
       setToastMessage(`You deleted folder: ${name}`);
       return result;
     } catch (error) {

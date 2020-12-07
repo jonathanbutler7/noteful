@@ -29,7 +29,7 @@ function AddFolder() {
     try {
       const response = await axios.post(url, body);
       const result = response.data;
-      restartTimer();
+      restartTimer('/');
       setToastMessage(`Added folder called '${folderName}'`);
       return result;
     } catch (error) {

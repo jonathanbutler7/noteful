@@ -4,15 +4,13 @@ import { useNoteful } from './NotefulContext';
 import { useInterval } from './useInterval';
 
 function useCounter() {
-  const { count, setCount, setIsRunning, isRunning } = useNoteful();
+  const { count, setCount, setIsRunning, isRunning, toastRoute } = useNoteful();
   const history = useHistory();
 
   useEffect(() => {
     if (count < 1) {
       setIsRunning(false);
-      if (history.location.pathname !== '/') {
-        history.push('/');
-      }
+      if (toastRoute !== null) history.push(toastRoute);
     }
   }, [count]);
 
