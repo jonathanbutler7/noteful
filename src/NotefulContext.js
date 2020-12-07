@@ -15,10 +15,8 @@ export function NotefulProvider({ children }) {
   const [selectedNote, setSelectedNote] = useState(null);
   const [showToast, setShowToast] = useState(true);
   const [toastMessage, setToastMessage] = useState('');
-
-  // function handleIsRunningChange(e) {
-  //   setIsRunning(e.target.checked);
-  // }
+  const [isRunning, setIsRunning] = useState(true);
+  const [count, setCount] = useState(3);
 
   useEffect(() => {
     getData('folders');
@@ -27,15 +25,6 @@ export function NotefulProvider({ children }) {
   useEffect(() => {
     getData('notes');
   }, [notes]);
-
-  useEffect(() => {
-    setToastMessage('Welcome, add some fun folders and notes!');
-  }, []);
-
-  useInterval(() => {
-    setShowToast(false);
-    // setIsRunning(false);
-  }, 3000);
 
   async function getData(param) {
     const url = `${serverUrl}/api/${param}`;
@@ -53,6 +42,16 @@ export function NotefulProvider({ children }) {
     }
   }
 
+  useEffect(() => {
+    setToastMessage('Welcome to Noteful, add some fun folders and notes!');
+  }, []);
+
+  function restartTimer() {
+    setIsRunning(true);
+    setShowToast(true);
+    setCount(3);
+  }
+
   const value = {
     folders,
     notes,
@@ -65,10 +64,11 @@ export function NotefulProvider({ children }) {
     setShowToast,
     toastMessage,
     setToastMessage,
-    // isRunning,
-    // setIsRunning,
-    // count,
-    // setCount,
+    isRunning,
+    setIsRunning,
+    count,
+    setCount,
+    restartTimer,
   };
 
   return (

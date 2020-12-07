@@ -5,8 +5,8 @@ import styles from './AddFolder.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
-function AddFolderF() {
-  const { serverUrl, setShowToast, setToastMessage } = useNoteful();
+function AddFolder() {
+  const { serverUrl, setShowToast, setToastMessage, restartTimer } = useNoteful();
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -27,15 +27,12 @@ function AddFolderF() {
     const folder_name = folderName;
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
-    setShowToast(true);
+    restartTimer();
     setToastMessage(`You added a folder called '${folderName}'`);
     try {
       const response = await axios.post(url, body);
       const result = response.data;
       console.log(result);
-      setTimeout(() => {
-        history.push('/');
-      }, 3000);
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');
@@ -70,4 +67,4 @@ function AddFolderF() {
   );
 }
 
-export default AddFolderF;
+export default AddFolder;

@@ -3,7 +3,7 @@ import { Toast } from 'react-bootstrap';
 import { useNoteful } from '../../NotefulContext';
 import Counter from '../Counter/Counter';
 function Toasty() {
-  const { showToast, setShowToast, toastMessage } = useNoteful();
+  const { showToast, setShowToast, toastMessage, count } = useNoteful();
 
   const styles = {
     border: '1px solid black',
@@ -17,18 +17,20 @@ function Toasty() {
   };
 
   return (
-    <Toast
-      show={showToast}
-      onClose={() => setShowToast(!showToast)}
-      style={styles}
-    >
-      <Toast.Header>
-        <strong className='mr-auto'>Noteful</strong>
-      </Toast.Header>
-      <Toast.Body>{toastMessage}</Toast.Body>
-      <p>Taking you home in:</p>
-      <Counter />
-    </Toast>
+    <>
+      <Toast
+        show={showToast}
+        onClose={() => setShowToast(!showToast)}
+        style={styles}
+      >
+        <Toast.Header>
+          <strong className='mr-auto'>Noteful</strong>
+        </Toast.Header>
+        <Toast.Body>{toastMessage}</Toast.Body>
+        <p>Taking you home in:</p>
+        <Counter />
+      </Toast>
+    </>
   );
 }
 

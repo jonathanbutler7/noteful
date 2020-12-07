@@ -4,9 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useNoteful } from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
-import { useInterval } from '../../useInterval';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 function FolderList() {
   const history = useHistory();
@@ -15,27 +13,22 @@ function FolderList() {
     serverUrl,
     selectedFolder,
     setSelectedFolder,
-    setShowToast,
-    showToast,
+    restartTimer,
     setToastMessage,
   } = useNoteful();
 
   async function deleteFromApi(id, name) {
     const url = `${serverUrl}/api/folders/${id}`;
-    setShowToast(true);
-    setToastMessage(`You deleted folder: ${name}`);
-
     try {
       const response = await axios.delete(url);
       const result = response.data;
       console.log(result);
+      restartTimer();
+      setToastMessage(`You deleted folder: ${name}`);
     } catch (error) {
       console.error(error);
     }
   }
-    useInterval(() => {
-      setShowToast(false);
-    }, 3000);
 
   function handleToggle(folderId) {
     setSelectedFolder(folderId);

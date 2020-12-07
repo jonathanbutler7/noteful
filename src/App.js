@@ -12,8 +12,8 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Counter />
       <NotefulProvider>
+      <Counter />
         <Toast />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>

@@ -1,34 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useNoteful } from '../../NotefulContext';
-
-export function useInterval(callback, delay) {
-  
-  const savedCallback = useRef();
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
+import { useInterval } from '../../useInterval';
 
 function Counter() {
-//   const { count, setCount, running, setIsRunning, isRunning } = useNoteful();
-  const [isRunning, setIsRunning] = useState(true);
-  const [count, setCount] = useState(3);
-  console.log(count);
+  const { count, setCount, setIsRunning, isRunning } = useNoteful();
+  const history = useHistory();
 
   useEffect(() => {
-    if (count === 0) {
+    console.log(count);
+    if (count < 1) {
       setIsRunning(false);
+      if (history.pathname !== '/') {
+        history.push('/');
+      }
     }
   }, [count]);
 
@@ -39,16 +24,9 @@ function Counter() {
     isRunning ? 1000 : null
   );
 
-  function restart() {
-      setIsRunning(true);
-      setCount(3)
-  }
-
-  
-
   return (
     <>
-      <button onClick={() => restart()}>do it again</button>
+      {/* <button onClick={() => restart()}>do it again</button> */}
       <p>{count !== 0 && count}</p>
     </>
   );
