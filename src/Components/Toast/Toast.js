@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Toast } from 'react-bootstrap';
 import { useNoteful } from '../../NotefulContext';
-
+import Counter from '../Counter/Counter';
 function Toasty() {
   const { showToast, setShowToast, toastMessage } = useNoteful();
-  
+
   const styles = {
     border: '1px solid black',
     margin: '2rem',
@@ -17,12 +17,17 @@ function Toasty() {
   };
 
   return (
-    <Toast show={showToast} onClose={() => setShowToast(!showToast)} style={styles}>
+    <Toast
+      show={showToast}
+      onClose={() => setShowToast(!showToast)}
+      style={styles}
+    >
       <Toast.Header>
-        {/* <img src='holder.js/20x20?text=%20' className='rounded mr-2' alt='' /> */}
         <strong className='mr-auto'>Noteful</strong>
       </Toast.Header>
       <Toast.Body>{toastMessage}</Toast.Body>
+      <p>Taking you home in:</p>
+      <Counter />
     </Toast>
   );
 }

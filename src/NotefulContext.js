@@ -16,6 +16,10 @@ export function NotefulProvider({ children }) {
   const [showToast, setShowToast] = useState(true);
   const [toastMessage, setToastMessage] = useState('');
 
+  // function handleIsRunningChange(e) {
+  //   setIsRunning(e.target.checked);
+  // }
+
   useEffect(() => {
     getData('folders');
   }, [folders]);
@@ -29,8 +33,8 @@ export function NotefulProvider({ children }) {
   }, []);
 
   useInterval(() => {
-    // Your custom logic here
     setShowToast(false);
+    // setIsRunning(false);
   }, 3000);
 
   async function getData(param) {
@@ -61,6 +65,10 @@ export function NotefulProvider({ children }) {
     setShowToast,
     toastMessage,
     setToastMessage,
+    // isRunning,
+    // setIsRunning,
+    // count,
+    // setCount,
   };
 
   return (

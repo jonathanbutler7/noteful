@@ -7,11 +7,12 @@ import { NotefulProvider } from './NotefulContext';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import Toast from './Components/Toast/Toast'
-
+import Counter from './Components/Counter/Counter'
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <Counter />
       <NotefulProvider>
         <Toast />
         <ErrorBoundary FallbackComponent={ErrorPage}>
