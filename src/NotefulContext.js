@@ -22,9 +22,11 @@ export function NotefulProvider({ children }) {
 
   useEffect(() => {
     getData('notes');
-
-    setToastMessage('Welcome, add some fun folders and notes!');
   }, [notes]);
+
+  useEffect(() => {
+    setToastMessage('Welcome, add some fun folders and notes!');
+  }, []);
 
   useInterval(() => {
     // Your custom logic here

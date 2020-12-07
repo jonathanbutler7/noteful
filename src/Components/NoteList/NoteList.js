@@ -17,7 +17,7 @@ function NoteList() {
         </span>
       </h2>
       {newNotesList.map((note, id) => (
-        <Note note={note} id={id} />
+        <Note note={note} id={id} key={id} />
       ))}
       <div className={styles.addButton}>
         <Link to={'/add-note'} name='linkToAddNote'>

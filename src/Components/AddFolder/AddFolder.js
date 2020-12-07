@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNoteful } from '../../NotefulContext';
+import { useHistory } from 'react-router-dom';
 import styles from './AddFolder.module.scss';
 import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
@@ -9,7 +10,7 @@ function AddFolderF() {
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  
+  const history = useHistory();
   function updateFolder(folder) {
     setFolderName(folder);
     setValue(true);
@@ -26,14 +27,15 @@ function AddFolderF() {
     const folder_name = folderName;
     const body = { folder_name };
     const url = `${serverUrl}/api/folders`;
-
+    setShowToast(true);
+    setToastMessage(`You added a folder called '${folderName}'`);
     try {
       const response = await axios.post(url, body);
       const result = response.data;
       console.log(result);
-      // window.location.href = '/';
-      setShowToast(true);
-      setToastMessage('YOu added a folder')
+      setTimeout(() => {
+        history.push('/');
+      }, 3000);
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');

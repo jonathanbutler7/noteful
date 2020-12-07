@@ -1,21 +1,29 @@
 import React from 'react';
 import './FolderList.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useNoteful } from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 
 function FolderList() {
+  const history = useHistory();
   const {
     folders,
     serverUrl,
     selectedFolder,
     setSelectedFolder,
+    setShowToast,
+    setToastMessage,
   } = useNoteful();
 
-  async function deleteFromApi(id) {
+  async function deleteFromApi(id, name) {
     const url = `${serverUrl}/api/folders/${id}`;
+    setShowToast(true);
+    setToastMessage(`You deleted folder: ${name}`);
+    setTimeout(() => {
+      history.push('/');
+    }, 3000);
     try {
       const response = await axios.delete(url);
       const result = response.data;
@@ -45,25 +53,25 @@ function FolderList() {
             📁
           </span>
         </h2>
-        {folders.map((folder) => {
+        {folders.map(({ folder_name, id }) => {
           return (
             <Link
-              to={`/folder/${folder.id}`}
+              to={`/folder/${id}`}
               id='linkItem'
-              key={folder.id}
+              key={id}
               style={{ textDecoration: 'none' }}
               name='linkToFolderContents'
             >
               <h4
-                onClick={() => handleToggle(folder.id)}
-                className={className(selectedFolder, folder.id)}
-                key={folder.id}
+                onClick={() => handleToggle(id)}
+                className={className(selectedFolder, id)}
+                key={id}
               >
-                {folder.folder_name}
+                {folder_name}
                 <div className='deleteCorner'>
                   <AiFillDelete
                     className='deleteIcon'
-                    onClick={() => deleteFromApi(folder.id)}
+                    onClick={() => deleteFromApi(id, folder_name)}
                   />
                 </div>
               </h4>
