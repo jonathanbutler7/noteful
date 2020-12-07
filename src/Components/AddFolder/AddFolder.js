@@ -5,7 +5,7 @@ import ValidationError from '../ValidationError/ValidationError';
 import axios from 'axios';
 
 function AddFolderF() {
-  const { serverUrl } = useNoteful();
+  const { serverUrl, setShowToast, setToastMessage } = useNoteful();
   const [folderName, setFolderName] = useState('');
   const [value, setValue] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -28,10 +28,12 @@ function AddFolderF() {
     const url = `${serverUrl}/api/folders`;
 
     try {
-      const response = axios.post(url, body);
+      const response = await axios.post(url, body);
       const result = response.data;
       console.log(result);
-      window.location.href = '/';
+      // window.location.href = '/';
+      setShowToast(true);
+      setToastMessage('YOu added a folder')
     } catch (error) {
       console.error(error);
       setErrorMsg('Failed to add folder to server.');

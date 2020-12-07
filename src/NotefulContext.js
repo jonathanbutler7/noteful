@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import { useInterval } from './useInterval';
 const serverUrl = 'https://noteful-server-11.herokuapp.com';
 const NotefulContext = createContext();
 
@@ -12,6 +13,8 @@ export function NotefulProvider({ children }) {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [showToast, setShowToast] = useState(true);
+  const [toastMessage, setToastMessage] = useState('');
 
   useEffect(() => {
     getData('folders');
@@ -19,7 +22,14 @@ export function NotefulProvider({ children }) {
 
   useEffect(() => {
     getData('notes');
+
+    setToastMessage('Welcome, add some fun folders and notes!');
   }, [notes]);
+
+  useInterval(() => {
+    // Your custom logic here
+    setShowToast(false);
+  }, 3000);
 
   async function getData(param) {
     const url = `${serverUrl}/api/${param}`;
@@ -45,6 +55,10 @@ export function NotefulProvider({ children }) {
     selectedFolder,
     selectedNote,
     serverUrl,
+    showToast,
+    setShowToast,
+    toastMessage,
+    setToastMessage,
   };
 
   return (
