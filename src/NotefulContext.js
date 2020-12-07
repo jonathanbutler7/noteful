@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from 'react';
 import axios from 'axios';
-import { useInterval } from './useInterval';
 const serverUrl = 'https://noteful-server-11.herokuapp.com';
 const NotefulContext = createContext();
 
@@ -16,7 +15,7 @@ export function NotefulProvider({ children }) {
   const [showToast, setShowToast] = useState(true);
   const [toastMessage, setToastMessage] = useState('');
   const [isRunning, setIsRunning] = useState(true);
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(5);
 
   useEffect(() => {
     getData('folders');

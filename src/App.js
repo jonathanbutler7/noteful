@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <NotefulProvider>
-      <Counter />
+      {/* <Counter /> */}
         <Toast />
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Toast } from 'react-bootstrap';
 import { useNoteful } from '../../NotefulContext';
-import Counter from '../Counter/Counter';
+import counter from '../Counter/Counter';
 function Toasty() {
-  const { showToast, setShowToast, toastMessage, count } = useNoteful();
+  const { showToast, setShowToast, toastMessage } = useNoteful();
+  const number = counter();
 
   const styles = {
     border: '1px solid black',
@@ -18,18 +19,18 @@ function Toasty() {
 
   return (
     <>
-      <Toast
-        show={showToast}
-        onClose={() => setShowToast(!showToast)}
-        style={styles}
-      >
-        <Toast.Header>
-          <strong className='mr-auto'>Noteful</strong>
-        </Toast.Header>
-        <Toast.Body>{toastMessage}</Toast.Body>
-        <p>Taking you home in:</p>
-        <Counter />
-      </Toast>
+      {number > 0 && (
+        <div
+          show={showToast.toString()}
+          onClose={() => setShowToast(!showToast)}
+          style={styles}
+        >
+          <div>
+            <strong>{toastMessage}</strong>
+          </div>
+          <small>Taking you home in: {number}</small>
+        </div>
+      )}
     </>
   );
 }
