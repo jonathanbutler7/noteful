@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 I built this project in the summer of 2020 as part of the Thinkful fullstack bootcamp. 
 
-It may be viewed live at: https://noteful-deployment.herokuapp.com/
+It may be viewed live by clicking [here](https://noteful-deployment.herokuapp.com/).
 
 I built the React client when learning frontend and built the Express server and PostgreSQL database while learning the backend. Immediately after finishing the client, I got a contract position doing React development, so I came back later to finish the backend, and deployed it in December 2020. The backend may be found in a pinned repo called noteful-server.
 
