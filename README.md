@@ -1,3 +1,5 @@
+![alt text](https://storage.googleapis.com/portfolio-website-content/noteful.png)
+
 In the project directory, you can run:
 
 ### `npm start`
