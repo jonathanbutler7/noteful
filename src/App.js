@@ -8,6 +8,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Header from './Components/Header/Header';
 import Toast from './Components/Toast/Toast';
 import Auth from './Components/Auth/Auth';
+import Register from './Components/Register/Register'
 
 function App() {
   return (
@@ -16,8 +17,10 @@ function App() {
       <NotefulProvider>
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <Switch>
+          <Route path='/register' component={Register} />
             <Auth>
               <Toast />
+              
               {routes.map((route, idx) =>
                 route.exact ? (
                   <Route

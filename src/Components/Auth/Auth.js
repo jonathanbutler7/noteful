@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Route } from 'react-router-dom';
+import { useHistory, Route, Switch } from 'react-router-dom';
 import { getJwt } from './helpers';
 import axios from 'axios';
 import Login from '../Login/Login';
+import Register from '../Register/Register'
 
 export default function Auth(props) {
   const [user, setUser] = useState(undefined);
@@ -38,8 +39,12 @@ export default function Auth(props) {
     <>
       {user === undefined ? (
         <div>
-          {/* <Route path='/' component={Login} /> */}
-          <Login />
+          <Switch >
+          {/* <Login /> */}
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Register} />
+
+          </Switch>
         </div>
       ) : (
         <div>{props.children}</div>
