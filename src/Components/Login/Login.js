@@ -16,6 +16,8 @@ export default function Login() {
     try {
       let response = await axios.post(url, data);
       console.log(response);
+      localStorage.setItem('cool-jwt', response.data);
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +46,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <button type='submit'>submit</button>
+          <button type='submit'>Log in</button>
         </form>
         <Link to='/signup'>Don't have an account?</Link>
       </div>

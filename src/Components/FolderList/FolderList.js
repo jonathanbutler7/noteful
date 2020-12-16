@@ -1,6 +1,6 @@
 import React from 'react';
 import './FolderList.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useNoteful } from '../../NotefulContext';
 import { AiFillDelete } from 'react-icons/ai';
 import { withRouter } from 'react-router';
@@ -15,7 +15,11 @@ function FolderList() {
     restartTimer,
     setToastMessage,
   } = useNoteful();
-
+  const history = useHistory();
+  function removeToken() {
+    localStorage.removeItem('cool-jwt');
+    history.push('/login');
+  }
   async function deleteFromApi(id, name) {
     const url = `${serverUrl}/api/folders/${id}`;
     try {
@@ -82,6 +86,7 @@ function FolderList() {
           <h5>Add Folder</h5>
         </Link>
       </div>
+      <button onClick={(e) => removeToken()}>log out</button>
     </div>
   );
 }
