@@ -44,23 +44,23 @@ export function NotefulProvider({ children }) {
 
   useEffect(() => {
     setToastMessage('Welcome to Noteful, add some fun folders and notes!');
-    setToastRoute(null)
+    setToastRoute(null);
   }, []);
 
   function restartTimer(route) {
     setIsRunning(true);
-    setToastRoute(route)
+    setToastRoute(route);
     setShowToast(true);
     setCount(3);
   }
-  
+
   const value = {
     folders,
     notes,
-    setSelectedFolder,
-    setSelectedNote,
     selectedFolder,
+    setSelectedFolder,
     selectedNote,
+    setSelectedNote,
     serverUrl,
     showToast,
     setShowToast,
