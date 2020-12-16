@@ -1,5 +1,5 @@
 export const getJwt = () => {
-    return localStorage.getItem('cool-jwt');
+    return localStorage.getItem('noteful-jwt');
   };
 
   

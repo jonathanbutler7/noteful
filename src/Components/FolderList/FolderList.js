@@ -17,7 +17,7 @@ function FolderList() {
   } = useNoteful();
   const history = useHistory();
   function removeToken() {
-    localStorage.removeItem('cool-jwt');
+    localStorage.removeItem('noteful-jwt');
     history.push('/login');
   }
   async function deleteFromApi(id, name) {

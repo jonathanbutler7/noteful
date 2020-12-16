@@ -8,13 +8,14 @@ export default function Auth(props) {
   const [user, setUser] = useState(undefined);
   const jwt = getJwt();
   const history = useHistory();
-
+  
   useEffect(() => {
     if (!jwt) {
       history.push('/login');
+      setUser(undefined)
     }
     getUser();
-  }, []);
+  }, [jwt]);
 
   async function getUser() {
     var config = {
@@ -29,15 +30,16 @@ export default function Auth(props) {
       setUser(response.data.email);
       history.push('/');
     } catch (error) {
-      console.error(error);
+      return error;
     }
   }
-
+  
   return (
     <>
       {user === undefined ? (
         <div>
-          <Route exact path='/login' component={Login} />
+          {/* <Route path='/' component={Login} /> */}
+          <Login />
         </div>
       ) : (
         <div>{props.children}</div>

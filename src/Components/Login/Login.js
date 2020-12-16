@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('email@test.com');
   const [password, setPassword] = useState('password');
+  const [error, setLError] = useState('');
   const history = useHistory();
 
   async function submit(e) {
@@ -15,10 +16,10 @@ export default function Login() {
     var data = { email, password };
     try {
       let response = await axios.post(url, data);
-      console.log(response);
-      localStorage.setItem('cool-jwt', response.data);
+      localStorage.setItem('noteful-jwt', response.data);
       history.push('/');
     } catch (error) {
+      setLError('Email/password combo incorrect');
       console.log(error);
     }
   }
@@ -48,6 +49,7 @@ export default function Login() {
           </label>
           <button type='submit'>Log in</button>
         </form>
+        {error && error}
         <Link to='/signup'>Don't have an account?</Link>
       </div>
     </div>
