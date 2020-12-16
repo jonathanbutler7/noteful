@@ -1,0 +1,46 @@
+.viewport {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 15px auto;
+    padding-bottom: 25px;
+    border: 2px solid black;
+    max-width: 350px;
+    background-color: #f5f5f5;
+}
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    width: 175px;
+    margin: 0 auto;
+
+    button {
+        background-color: white;
+        border: 1px solid #424242;
+        color: #424242;
+        font-family: "arial";
+        width: 175px;
+        height: 56px;
+        text-decoration: none;
+        text-align: center;
+        margin: 10px auto 0 auto;
+        cursor: pointer;
+    }
+
+    a {
+        margin: 1rem 0;
+    }
+}
+
+#textarea {
+    min-width: 169px;
+    max-width: 250px;
+    margin-bottom: 15px;
+}
+
+.addButton:hover {
+    color: white;
+    background-color: #454545;
+}
