@@ -85,8 +85,10 @@ function FolderList() {
         >
           <h5>Add Folder</h5>
         </Link>
+        <button className='addFolderButton' onClick={(e) => removeToken()}>
+          <h5>Log out</h5>
+        </button>
       </div>
-      <button onClick={(e) => removeToken()}>log out</button>
     </div>
   );
 }
