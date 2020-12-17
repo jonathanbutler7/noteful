@@ -5,8 +5,8 @@ import styles from '../Login/Login.module.scss';
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
-  const [email, setEmail] = useState('email@test.com');
-  const [password, setPassword] = useState('password');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setLError] = useState('');
   const history = useHistory();
