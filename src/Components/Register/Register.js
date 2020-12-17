@@ -57,7 +57,7 @@ export default function Login() {
             />
           </label>
           <label htmlFor='password'>
-            password
+            Confirm password
             <input
               type='password'
               name='confirmpassword'

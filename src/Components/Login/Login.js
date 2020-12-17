@@ -49,6 +49,7 @@ export default function Login() {
           </label>
           <button type='submit'>Log in</button>
         </form>
+        demo account: <br/>email: email@test.com <br/>password: password
         {error && error}
         <Link to='/signup'>Don't have an account?</Link>
       </div>
