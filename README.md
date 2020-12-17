@@ -12,7 +12,7 @@ It may be viewed live by clicking [here](https://noteful-deployment.herokuapp.co
 
 I built the React client when learning frontend and built the Express server and PostgreSQL database while learning the backend. Immediately after finishing the client, I got a contract position doing React development, so I came back later to finish the backend, and deployed it in December 2020. The backend may be found in a pinned repo called noteful-server.
 
-Recent updates:  
+### Updates & Additions:  
 -changed all the class components into functional components  
 -changed out the fetch API for axios  
 -simplified state updates  
@@ -21,6 +21,4 @@ Recent updates:
 -changed useContext to best practices  
 -added a toast component that consumes a custom hook counter/useInterval function  
 -and added a few emojis since there are no colors.  
-
-Upcoming feature:  
--Login/signup  
+-Login/signup with JWT authentication and encrypted password storage
