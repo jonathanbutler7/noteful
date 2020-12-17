@@ -12,7 +12,7 @@ export default function Login() {
 
   async function submit(e) {
     e.preventDefault();
-    const url = `${process.env.REACT_APP_SERVER_URL}/api/login/gettoken`;
+    const url = `${process.env.REACT_APP_SERVER_URL}/api/login/gettoken`
     var data = { email, password };
     try {
       let response = await axios.post(url, data);
