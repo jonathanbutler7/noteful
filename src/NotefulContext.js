@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect, createContext } from 'react';
 import axios from 'axios';
-const serverUrl = 'https://noteful-server-11.herokuapp.com';
+const serverUrl = process.env.REACT_APP_SERVER_URL;
 const NotefulContext = createContext();
 
 export function useNoteful() {
   return useContext(NotefulContext);
 }
-
 export function NotefulProvider({ children }) {
   const [notes, setNotes] = useState([]);
   const [folders, setFolders] = useState([]);
@@ -17,14 +16,14 @@ export function NotefulProvider({ children }) {
   const [toastRoute, setToastRoute] = useState('/');
   const [isRunning, setIsRunning] = useState(true);
   const [count, setCount] = useState(5);
-
+  
   useEffect(() => {
     getData('folders');
-  }, [folders]);
+  }, []);
 
   useEffect(() => {
     getData('notes');
-  }, [notes]);
+  }, []);
 
   async function getData(param) {
     const url = `${serverUrl}/api/${param}`;
