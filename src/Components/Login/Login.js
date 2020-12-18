@@ -12,7 +12,7 @@ export default function Login() {
 
   async function submit(e) {
     e.preventDefault();
-    const url = `${process.env.REACT_APP_SERVER_URL}/api/login/gettoken`
+    const url = `${process.env.REACT_APP_SERVER_URL}/api/login/gettoken`;
     var data = { email, password };
     try {
       let response = await axios.post(url, data);
@@ -49,8 +49,9 @@ export default function Login() {
           </label>
           <button type='submit'>Log in</button>
         </form>
-        demo account: <br/>email: email@test.com <br/>password: password
-        <br/>
+        <b>demo email: </b> email@test.com <br />
+        <b>demo password:</b> password
+        <br />
         {error && error}
         <Link to='/signup'>Don't have an account?</Link>
       </div>
