@@ -1,4 +1,4 @@
-![noteful-screenshot](https://drive.google.com/thumbnail?id=1Zla8JqpJKnYGqZy9E5QT_Yq-pOjH0t1I)
+![noteful screenshot](https://drive.google.com/thumbnail?id=1Zla8JqpJKnYGqZy9E5QT_Yq-pOjH0t1I)
 
 In the project directory, you can run:
 
